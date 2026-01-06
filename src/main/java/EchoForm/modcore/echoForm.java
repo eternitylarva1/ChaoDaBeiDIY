@@ -75,6 +75,11 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
         BaseMod.addRelic(new BlackboardArmor(), RelicType.SHARED);
         BaseMod.addRelic(new Spinach(), RelicType.SHARED);
         BaseMod.addRelic(new ConfusingMushroom(), RelicType.SHARED);
+        BaseMod.addRelic(new TungstenCup(), RelicType.SHARED);
+        BaseMod.addRelic(new TowerCurse(), RelicType.SHARED);
+        BaseMod.addRelic(new Taurus(), RelicType.SHARED);
+        BaseMod.addRelic(new CursedEye(), RelicType.SHARED);
+        BaseMod.addRelic(new RaccoonLeaf(), RelicType.SHARED);
    
     }
 
