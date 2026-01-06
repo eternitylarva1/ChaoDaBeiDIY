@@ -4,16 +4,13 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.ConfusionPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class ConfusingMushroom extends CustomRelic {
@@ -23,36 +20,33 @@ public class ConfusingMushroom extends CustomRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     private static final String IMG = "echoFormResources/images/relics/ConfusingMushroom.png";
     
-    private static final int BLOCK_AMOUNT = 6;
-    private static final int HEAL_AMOUNT = 3;
+    private static final int MAX_HP_BONUS = 10;
 
     public ConfusingMushroom() {
-        super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.MAGICAL);
+        super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.UNCOMMON, LandingSound.FLAT);
     }
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0];
+        return DESCRIPTIONS[0] + DESCRIPTIONS[1];
     }
 
     @Override
-    public void onPlayCard(AbstractCard card, AbstractMonster m) {
-        // 当你打出一张攻击牌时，给予所有敌人混乱，获得6点格挡，回复3点生命
-        if (card.type == AbstractCard.CardType.ATTACK) {
+    public void onEquip() {
+        // 拾取时获得10点血量上限
+        AbstractDungeon.player.increaseMaxHp(MAX_HP_BONUS, true);
+    }
+
+    @Override
+    public void onPlayCard(AbstractCard card, com.megacrit.cardcrawl.monsters.AbstractMonster m) {
+        // 每打出一张牌，丢弃最左侧的卡牌，然后抽一张牌
+        if (!AbstractDungeon.player.hand.isEmpty()) {
             this.flash();
-            
-            // 给予所有敌人混乱
-            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (!mo.isDead && !mo.isDying) {
-                    addToBot((AbstractGameAction)new ApplyPowerAction(mo, AbstractDungeon.player, new ConfusionPower(mo)));
-                }
-            }
-            
-            // 获得格挡
-            addToBot((AbstractGameAction)new GainBlockAction(AbstractDungeon.player, BLOCK_AMOUNT));
-            
-            // 回复生命
-            addToBot((AbstractGameAction)new HealAction(AbstractDungeon.player, AbstractDungeon.player, HEAL_AMOUNT));
+            // 丢弃最左侧的卡牌
+            AbstractCard leftmostCard = AbstractDungeon.player.hand.group.get(0);
+            addToBot((AbstractGameAction)new ExhaustSpecificCardAction(leftmostCard, AbstractDungeon.player.hand));
+            // 抽一张牌
+            addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 1));
         }
     }
 

@@ -70,31 +70,11 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
         BaseMod.addRelic(new HolyRing(), RelicType.SHARED);
         BaseMod.addRelic(new PerfectCore(), RelicType.SHARED);
         BaseMod.addRelic(new PrimordialWater(), RelicType.SHARED);
-        BaseMod.addRelic(new EmptyNameCrown(), RelicType.SHARED);
+        BaseMod.addRelic(new FamelessCrown(), RelicType.SHARED);
         BaseMod.addRelic(new OliveBranch(), RelicType.SHARED);
         BaseMod.addRelic(new BlackboardArmor(), RelicType.SHARED);
         BaseMod.addRelic(new Spinach(), RelicType.SHARED);
         BaseMod.addRelic(new ConfusingMushroom(), RelicType.SHARED);
-        BaseMod.addRelic(new TitaniumCup(), RelicType.SHARED);
-        BaseMod.addRelic(new CurseOfCurse(), RelicType.SHARED);
-        BaseMod.addRelic(new GoldenBull(), RelicType.SHARED);
-        BaseMod.addRelic(new CurseEye(), RelicType.SHARED);
-        BaseMod.addRelic(new CatLeaf(), RelicType.SHARED);
-        BaseMod.addRelic(new BlueWitchHat(), RelicType.SHARED);
-        BaseMod.addRelic(new BlueMilk(), RelicType.SHARED);
-        BaseMod.addRelic(new ChessPiece(), RelicType.SHARED);
-        BaseMod.addRelic(new Plate(), RelicType.SHARED);
-        BaseMod.addRelic(new DarkContract(), RelicType.SHARED);
-        BaseMod.addRelic(new HypnoticWatch(), RelicType.SHARED);
-        BaseMod.addRelic(new Portal(), RelicType.SHARED);
-        BaseMod.addRelic(new Tombstone(), RelicType.SHARED);
-        BaseMod.addRelic(new Shard(), RelicType.SHARED);
-        BaseMod.addRelic(new RitualFeatherCrown(), RelicType.SHARED);
-        BaseMod.addRelic(new AngryFlower(), RelicType.SHARED);
-        BaseMod.addRelic(new TwistedVine(), RelicType.SHARED);
-        BaseMod.addRelic(new MilkBucket(), RelicType.SHARED);
-        BaseMod.addRelic(new MilkPotion(), RelicType.SHARED);
-        BaseMod.addRelic(new RedFlower(), RelicType.SHARED);
    
     }
 
