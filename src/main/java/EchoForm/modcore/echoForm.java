@@ -1,7 +1,8 @@
 package EchoForm.modcore;
 
 
-import EchoForm.relics.Huixiang;
+import EchoForm.relics.*;
+import EchoForm.cards.*;
 import basemod.*;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -20,6 +21,7 @@ import com.megacrit.cardcrawl.localization.Keyword;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
+import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
@@ -33,7 +35,7 @@ import static com.megacrit.cardcrawl.core.Settings.seed;
 
 
 @SpireInitializer
-public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber,OnPlayerTurnStartSubscriber { // 实现接口
+public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber, EditCardsSubscriber, OnPlayerTurnStartSubscriber { // 实现接口
     public echoForm() {
         BaseMod.subscribe(this); // 告诉basemod你要订阅事件
     }
@@ -62,7 +64,53 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
     @Override
     public void receiveEditRelics() {
         BaseMod.addRelic(new Huixiang(), RelicType.SHARED);
+        BaseMod.addRelic(new DemonBlood(), RelicType.SHARED);
+        BaseMod.addRelic(new HandShield(), RelicType.SHARED);
+        BaseMod.addRelic(new SmallStone(), RelicType.SHARED);
+        BaseMod.addRelic(new HolyRing(), RelicType.SHARED);
+        BaseMod.addRelic(new PerfectCore(), RelicType.SHARED);
+        BaseMod.addRelic(new PrimordialWater(), RelicType.SHARED);
+        BaseMod.addRelic(new EmptyNameCrown(), RelicType.SHARED);
+        BaseMod.addRelic(new OliveBranch(), RelicType.SHARED);
+        BaseMod.addRelic(new BlackboardArmor(), RelicType.SHARED);
+        BaseMod.addRelic(new Spinach(), RelicType.SHARED);
+        BaseMod.addRelic(new ConfusingMushroom(), RelicType.SHARED);
+        BaseMod.addRelic(new TitaniumCup(), RelicType.SHARED);
+        BaseMod.addRelic(new CurseOfCurse(), RelicType.SHARED);
+        BaseMod.addRelic(new GoldenBull(), RelicType.SHARED);
+        BaseMod.addRelic(new CurseEye(), RelicType.SHARED);
+        BaseMod.addRelic(new CatLeaf(), RelicType.SHARED);
+        BaseMod.addRelic(new BlueWitchHat(), RelicType.SHARED);
+        BaseMod.addRelic(new BlueMilk(), RelicType.SHARED);
+        BaseMod.addRelic(new ChessPiece(), RelicType.SHARED);
+        BaseMod.addRelic(new Plate(), RelicType.SHARED);
+        BaseMod.addRelic(new DarkContract(), RelicType.SHARED);
+        BaseMod.addRelic(new HypnoticWatch(), RelicType.SHARED);
+        BaseMod.addRelic(new Portal(), RelicType.SHARED);
+        BaseMod.addRelic(new Tombstone(), RelicType.SHARED);
+        BaseMod.addRelic(new Shard(), RelicType.SHARED);
+        BaseMod.addRelic(new RitualFeatherCrown(), RelicType.SHARED);
+        BaseMod.addRelic(new AngryFlower(), RelicType.SHARED);
+        BaseMod.addRelic(new TwistedVine(), RelicType.SHARED);
+        BaseMod.addRelic(new MilkBucket(), RelicType.SHARED);
+        BaseMod.addRelic(new MilkPotion(), RelicType.SHARED);
+        BaseMod.addRelic(new RedFlower(), RelicType.SHARED);
+   
+    }
 
+    @Override
+    public void receiveEditCards() {
+        BaseMod.addCard(new Bloodfall());
+        BaseMod.addCard(new BurningSword());
+        BaseMod.addCard(new Neurotoxin());
+        BaseMod.addCard(new MachineSilence());
+        BaseMod.addCard(new UltimateCompute());
+        BaseMod.addCard(new AbsoluteZero());
+        BaseMod.addCard(new BoneScythe());
+        BaseMod.addCard(new NightHunt());
+        BaseMod.addCard(new MachineRage());
+        BaseMod.addCard(new MachineFormat());
+        BaseMod.addCard(new SleeveDanceMeteor());
     }
 
     @Override
@@ -75,6 +123,7 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
         }
     BaseMod.loadCustomStringsFile(RelicStrings.class, "echoFormResources/localization/" + lang + "/relics.json");
         BaseMod.loadCustomStringsFile(PowerStrings.class, "echoFormResources/localization/" + lang + "/powers.json");
+        BaseMod.loadCustomStringsFile(CardStrings.class, "echoFormResources/localization/" + lang + "/cards.json");
 
     }
     public static float getYPos(float y) {

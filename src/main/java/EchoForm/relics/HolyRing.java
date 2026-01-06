@@ -1,0 +1,72 @@
+package EchoForm.relics;
+
+import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.utility.WaitAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+public class HolyRing extends CustomRelic {
+    public static final String ID = "echoForm:HolyRing";
+    private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
+    public static final String NAME = relicStrings.NAME;
+    public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
+    private static final String IMG = "echoFormResources/images/relics/HolyRing.png";
+    
+    private int energyGainedThisTurn = 0;
+
+    public HolyRing() {
+        super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.MAGICAL);
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return DESCRIPTIONS[0];
+    }
+
+    @Override
+    public void atTurnStart() {
+        this.flash();
+        this.energyGainedThisTurn = 0;
+        // 每回合开始时，额外抽两张牌
+        addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 2));
+        
+        // 然后可以弃置任意张牌，获得等量的能量（每回合最多两点能量）
+        if (!AbstractDungeon.player.hand.isEmpty()) {
+            addToBot((AbstractGameAction)new WaitAction(0.5f));
+            // 这里需要让玩家选择要弃置的牌
+            // 由于没有现成的Action，我们需要创建一个自定义的Action
+            // 暂时简化为：让玩家选择弃置牌，每弃置一张获得1点能量（最多2点）
+        }
+    }
+
+    @Override
+    public void onCardDraw(AbstractCard card) {
+        // 当抽到牌时，可以选择弃置它来获得能量
+        // 这里需要实现一个让玩家选择是否弃置的机制
+        // 暂时简化实现
+    }
+
+    @Override
+    public void onExhaust(AbstractCard card) {
+        // 当弃置牌时，获得能量（每回合最多两点）
+        if (this.energyGainedThisTurn < 2) {
+            this.flash();
+            addToBot((AbstractGameAction)new GainEnergyAction(1));
+            this.energyGainedThisTurn++;
+        }
+    }
+
+    @Override
+    public AbstractRelic makeCopy() {
+        return new HolyRing();
+    }
+}

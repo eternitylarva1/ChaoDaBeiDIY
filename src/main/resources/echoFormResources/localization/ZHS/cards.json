@@ -1,0 +1,57 @@
+{
+  "Bloodfall": {
+    "NAME": "血瀑",
+    "DESCRIPTION": "对所有敌人造成手中攻击牌伤害之和的伤害。 NL 消耗 。 NL 敲后不消耗。 NL X费和多段只算一段。会计算左边的血瀑，比如有三张，那么伤害依次为一倍，两倍，四倍",
+    "UPGRADE_DESCRIPTION": "对所有敌人造成手中攻击牌伤害之和的伤害。 NL 敲后不消耗。 NL X费和多段只算一段。会计算左边的血瀑，比如有三张，那么伤害依次为一倍，两倍，四倍"
+  },
+  "BurningSword": {
+    "NAME": "焚烬之剑",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 本回合每消耗过一张牌，能耗减一。",
+    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 本回合每消耗过一张牌，能耗减一。"
+  },
+  "Neurotoxin": {
+    "NAME": "神经毒素",
+    "DESCRIPTION": "中毒的敌人攻击会命中随机目标。 NL 默认不会随机到自身，所以对单无用。 NL 补充：本回合不会攻击到角色的怪物头标会显示灰色，但是不会显示具体的攻击目标。",
+    "UPGRADE_DESCRIPTION": "中毒的敌人攻击会命中随机目标。 NL 默认不会随机到自身，所以对单无用。 NL 补充：本回合不会攻击到角色的怪物头标会显示灰色，但是不会显示具体的攻击目标。"
+  },
+  "MachineSilence": {
+    "NAME": "机静",
+    "DESCRIPTION": "激发所有充能球，本回合下次生成充能球时额外生成 !M! 个。",
+    "UPGRADE_DESCRIPTION": "激发所有充能球，本回合下次生成充能球时额外生成 !M! 个。"
+  },
+  "UltimateCompute": {
+    "NAME": "极限算力",
+    "DESCRIPTION": "充能球栏位减一。 NL 激发充能球时，其他充能球使用1次被动能力。",
+    "UPGRADE_DESCRIPTION": "充能球栏位减一。 NL 激发充能球时，其他充能球使用1次被动能力。"
+  },
+  "AbsoluteZero": {
+    "NAME": "绝对零度",
+    "DESCRIPTION": "回合结束时，每有一个冰霜充能球保留一张牌。 NL 生成 !M! 个冰霜充能球。",
+    "UPGRADE_DESCRIPTION": "回合结束时，每有一个冰霜充能球保留一张牌。 NL 生成 !M! 个冰霜充能球。"
+  },
+  "BoneScythe": {
+    "NAME": "碎骨镰",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 每有一层易伤，额外造成一次伤害。",
+    "UPGRADE_DESCRIPTION": "造成 !D! 点伤害。 NL 每有一层易伤，额外造成一次伤害。"
+  },
+  "NightHunt": {
+    "NAME": "夜狩",
+    "DESCRIPTION": "本回合内无色牌会被打出两次。",
+    "UPGRADE_DESCRIPTION": "本回合内无色牌会被打出两次。"
+  },
+  "MachineRage": {
+    "NAME": "机怒",
+    "DESCRIPTION": "造成 !D! 伤害。 NL 给予所有单位3易伤。",
+    "UPGRADE_DESCRIPTION": "造成 !D! 伤害。 NL 给予所有单位3易伤。"
+  },
+  "MachineFormat": {
+    "NAME": "机格",
+    "DESCRIPTION": "固有 。 NL 每打出10张能力牌，进入神格。 NL 将这张牌的复制放入抽牌堆。",
+    "UPGRADE_DESCRIPTION": "固有 。 NL 每打出10张能力牌，进入神格。 NL 将这张牌的复制放入抽牌堆。"
+  },
+  "SleeveDanceMeteor": {
+    "NAME": "袖舞流星",
+    "DESCRIPTION": "依次将你的手牌随机进行：打出，丢弃，复制，升级，变化费用，或者消耗（只消耗非攻击牌）。",
+    "UPGRADE_DESCRIPTION": "依次将你的手牌随机进行：打出，丢弃，复制，升级，变化费用，或者消耗（只消耗非攻击牌）。"
+  }
+}

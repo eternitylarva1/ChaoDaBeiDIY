@@ -1,0 +1,60 @@
+package EchoForm.relics;
+
+import basemod.abstracts.CustomRelic;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
+
+public class CatLeaf extends CustomRelic {
+    public static final String ID = "echoForm:CatLeaf";
+    private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
+    public static final String NAME = relicStrings.NAME;
+    public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
+    private static final String IMG = "echoFormResources/images/relics/CatLeaf.png";
+    
+    private static final int DEXTERITY_AMOUNT = 1;
+    private static final int BLOCK_AMOUNT = 5;
+    private static final int HEAL_AMOUNT = 2;
+
+    public CatLeaf() {
+        super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.MAGICAL);
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return DESCRIPTIONS[0];
+    }
+
+    @Override
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        // 当你打出一张技能牌时，获得1点敏捷，获得5点格挡，回复2点生命
+        if (card.type == AbstractCard.CardType.SKILL) {
+            this.flash();
+            
+            // 获得敏捷
+            addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new DexterityPower(AbstractDungeon.player, DEXTERITY_AMOUNT), DEXTERITY_AMOUNT));
+            
+            // 获得格挡
+            addToBot((AbstractGameAction)new GainBlockAction(AbstractDungeon.player, BLOCK_AMOUNT));
+            
+            // 回复生命
+            addToBot((AbstractGameAction)new HealAction(AbstractDungeon.player, AbstractDungeon.player, HEAL_AMOUNT));
+        }
+    }
+
+    @Override
+    public AbstractRelic makeCopy() {
+        return new CatLeaf();
+    }
+}

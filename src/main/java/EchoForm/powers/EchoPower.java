@@ -17,7 +17,7 @@ import com.megacrit.cardcrawl.monsters.exordium.GremlinNob;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class EchoPower extends AbstractPower {
-    public static final String POWER_ID = "Echo Form1";
+    public static final String POWER_ID = "echoForm:EchoPower";
     private static final PowerStrings powerStrings;
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
