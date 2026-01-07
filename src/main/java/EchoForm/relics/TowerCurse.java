@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.colorless.TheBomb;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -34,8 +35,8 @@ public class TowerCurse extends CustomRelic {
         // 每当你失去生命时，在你的抽牌堆中加入一张炸弹，其首次打出的耗能为0
         if (damageAmount > 0) {
             this.flash();
-            // 创建一张燃烧牌（作为炸弹的替代）
-            AbstractCard bomb = new Burn();
+            // 创建一张炸弹
+            AbstractCard bomb = new TheBomb();
             // 设置首次打出耗能为0
             bomb.costForTurn = 0;
             bomb.isCostModifiedForTurn = true;

@@ -3,6 +3,7 @@ package EchoForm.modcore;
 
 import EchoForm.relics.*;
 import EchoForm.cards.*;
+import EchoForm.potions.*;
 import basemod.*;
 import basemod.helpers.RelicType;
 import basemod.interfaces.*;
@@ -22,6 +23,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
@@ -80,7 +82,22 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
         BaseMod.addRelic(new Taurus(), RelicType.SHARED);
         BaseMod.addRelic(new CursedEye(), RelicType.SHARED);
         BaseMod.addRelic(new RaccoonLeaf(), RelicType.SHARED);
-   
+        BaseMod.addRelic(new FoolWizardHat(), RelicType.SHARED);
+        BaseMod.addRelic(new SoyMilk(), RelicType.SHARED);
+        BaseMod.addRelic(new ChessPiece(), RelicType.SHARED);
+        BaseMod.addRelic(new Coconut(), RelicType.SHARED);
+        BaseMod.addRelic(new DarkContract(), RelicType.SHARED);
+        BaseMod.addRelic(new HypnoticWatch(), RelicType.SHARED);
+        BaseMod.addRelic(new Portal(), RelicType.SHARED);
+        BaseMod.addRelic(new Tombstone(), RelicType.SHARED);
+        BaseMod.addRelic(new SteleFragment(), RelicType.SHARED);
+        BaseMod.addRelic(new RitualFeatherCrown(), RelicType.SHARED);
+        BaseMod.addRelic(new AngryFlower(), RelicType.SHARED);
+        BaseMod.addRelic(new TwistedVine(), RelicType.SHARED);
+        BaseMod.addRelic(new Plate(), RelicType.SHARED);
+        BaseMod.addRelic(new MilkBucket(), RelicType.SHARED);
+        BaseMod.addRelic(new Fireworks(), RelicType.SHARED);
+    
     }
 
     @Override
@@ -109,6 +126,7 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
     BaseMod.loadCustomStringsFile(RelicStrings.class, "echoFormResources/localization/" + lang + "/relics.json");
         BaseMod.loadCustomStringsFile(PowerStrings.class, "echoFormResources/localization/" + lang + "/powers.json");
         BaseMod.loadCustomStringsFile(CardStrings.class, "echoFormResources/localization/" + lang + "/cards.json");
+        BaseMod.loadCustomStringsFile(PotionStrings.class, "echoFormResources/localization/" + lang + "/potions.json");
 
     }
     public static float getYPos(float y) {

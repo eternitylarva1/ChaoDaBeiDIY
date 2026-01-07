@@ -1,0 +1,8 @@
+{
+  "echoForm:MilkPotion": {
+    "NAME": "牛奶",
+    "DESCRIPTIONS": [
+      "获得2点生命，清除自身所有负面状态。"
+    ]
+  }
+}

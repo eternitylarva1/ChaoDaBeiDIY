@@ -29,5 +29,11 @@
     "%(计算方法：层数/层数+当前生命/3),回合结束时，减少当前生命5%层数"
 
   ]
-}
+},
+  "echoForm:Invincible": {
+    "NAME": "Invincible",
+    "DESCRIPTIONS": [
+      "Immune to all damage this turn."
+    ]
+  }
 }

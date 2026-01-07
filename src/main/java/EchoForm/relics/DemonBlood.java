@@ -35,8 +35,6 @@ public class DemonBlood extends CustomRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     private static final String IMG = "echoFormResources/images/relics/DemonBlood.png";
     
-    private int energyGainedThisTurn = 0;
-
     public DemonBlood() {
         super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.MAGICAL);
     }
@@ -77,16 +75,16 @@ public class DemonBlood extends CustomRelic {
             // 回复1点血量
             addToBot((AbstractGameAction)new HealAction(AbstractDungeon.player, AbstractDungeon.player, 1));
             // 获得1点能量（每回合最多两点）
-            if (this.energyGainedThisTurn < 2) {
+            if (this.counter < 2) {
                 addToBot((AbstractGameAction)new GainEnergyAction(1));
-                this.energyGainedThisTurn++;
+                this.counter++;
             }
         }
     }
 
     @Override
     public void atTurnStart() {
-        this.energyGainedThisTurn = 0;
+        this.counter = 0;
     }
 
     @Override

@@ -1,3 +1,136 @@
 {
-
+    "echoForm:Huixiang": {
+        "NAME": "Echo",
+        "FLAVOR": "Memories flood back.",
+        "DESCRIPTIONS": [
+            "Every 5 cards played, repeat this effect.",
+            "Discard 1 random card from draw pile, draw 2 cards."
+        ]
+    },
+    "echoForm:DemonBlood": {
+        "NAME": "Demon Blood",
+        "FLAVOR": "Burning blood.",
+        "DESCRIPTIONS": [
+            "At the start of combat, gain 1 Strength. Every 3 cards played, gain 1 Energy."
+        ]
+    },
+    "echoForm:HandShield": {
+        "NAME": "Hand Shield",
+        "FLAVOR": "Use your hand as a shield.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 8 Block."
+        ]
+    },
+    "echoForm:SmallStone": {
+        "NAME": "Small Stone",
+        "FLAVOR": "A hard little stone.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, deal 3 damage to all enemies."
+        ]
+    },
+    "echoForm:HolyRing": {
+        "NAME": "Holy Ring",
+        "FLAVOR": "Radiating holy light.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, heal 4 HP."
+        ]
+    },
+    "echoForm:PerfectCore": {
+        "NAME": "Perfect Core",
+        "FLAVOR": "Contains endless power.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, draw 1 card."
+        ]
+    },
+    "echoForm:PrimordialWater": {
+        "NAME": "Primordial Water",
+        "FLAVOR": "Pure water of life.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 1 Strength."
+        ]
+    },
+    "echoForm:FamelessCrown": {
+        "NAME": "Fameless Crown",
+        "FLAVOR": "A king's crown known to none.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 2 Block."
+        ]
+    },
+    "echoForm:OliveBranch": {
+        "NAME": "Olive Branch",
+        "FLAVOR": "Symbol of peace.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, heal 3 HP."
+        ]
+    },
+    "echoForm:BlackboardArmor": {
+        "NAME": "Blackboard Armor",
+        "FLAVOR": "Armor filled with knowledge.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 5 Block."
+        ]
+    },
+    "echoForm:Spinach": {
+        "NAME": "Spinach",
+        "FLAVOR": "Source of power!",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 2 Strength."
+        ]
+    },
+    "echoForm:ConfusingMushroom": {
+        "NAME": "Confusing Mushroom",
+        "FLAVOR": "Makes you confused.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, apply 1 Weak to all enemies."
+        ]
+    },
+    "echoForm:TungstenCup": {
+        "NAME": "Tungsten Cup",
+        "FLAVOR": "An indestructible cup.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 10 Block."
+        ]
+    },
+    "echoForm:TowerCurse": {
+        "NAME": "Tower Curse",
+        "FLAVOR": "A curse from tower.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, deal 4 damage to all enemies."
+        ]
+    },
+    "echoForm:Taurus": {
+        "NAME": "Taurus",
+        "FLAVOR": "Symbol of strength and resilience.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, gain 3 Block and 1 Strength."
+        ]
+    },
+    "echoForm:CursedEye": {
+        "NAME": "Cursed Eye",
+        "FLAVOR": "A cursed eye sees everything.",
+        "DESCRIPTIONS": [
+            "Every 3 cards played, draw 1 card and lose 1 HP."
+        ]
+    },
+    "echoForm:RaccoonLeaf": {
+        "NAME": "Raccoon Leaf",
+        "FLAVOR": "A mysterious leaf.",
+        "DESCRIPTIONS": [
+            "Invincible (expires after playing a card)."
+        ]
+    },
+    "echoForm:FoolWizardHat": {
+        "NAME": "Fool Wizard Hat",
+        "FLAVOR": "A hat that looks silly.",
+        "DESCRIPTIONS": [
+            "At the start of each turn, draw 2 cards. Cannot play Attack cards consecutively."
+        ]
+    },
+    "echoForm:SoyMilk": {
+        "NAME": "Soy Milk",
+        "FLAVOR": "A nutritious drink.",
+        "DESCRIPTIONS": [
+            "When you draw an Attack card, reduce its cost by 1. Your Attack cards deal 75% less damage."
+        ]
+    }
 }

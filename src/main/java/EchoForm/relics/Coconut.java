@@ -9,47 +9,45 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
-import com.megacrit.cardcrawl.powers.StrengthPower;
+import com.megacrit.cardcrawl.powers.MetallicizePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class Spinach extends CustomRelic {
-    public static final String ID = "echoForm:Spinach";
+public class Coconut extends CustomRelic {
+    public static final String ID = "echoForm:Coconut";
     private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
     public static final String NAME = relicStrings.NAME;
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
-    private static final String IMG = "echoFormResources/images/relics/Spinach.png";
+    private static final String IMG = "echoFormResources/images/relics/Coconut.png";
     
-    private static final int MAX_HP_BONUS = 8;
-    private static final int STRENGTH_BONUS = 3;
+    private static final int METALLICIZE_AMOUNT = 8;
+    private static final float MAX_HP_REDUCTION = 0.2f;
 
-    public Spinach() {
-        super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.SHOP, LandingSound.FLAT);
-        this.counter = 5;
+    public Coconut() {
+        super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.HEAVY);
     }
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0];
     }
 
     @Override
     public void onEquip() {
-        // 拾取时获得8点血量上限
-        AbstractDungeon.player.increaseMaxHp(MAX_HP_BONUS, true);
+        // 拾取时，最大生命降低20%
+        AbstractPlayer p = AbstractDungeon.player;
+        int maxHpReduction = (int)(p.maxHealth * MAX_HP_REDUCTION);
+        p.decreaseMaxHealth(maxHpReduction);
     }
 
     @Override
     public void atBattleStart() {
-        // 之后的5场战斗开始时获得3点力量
-        if (this.counter > 0) {
-            this.flash();
-            addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new StrengthPower(AbstractDungeon.player, STRENGTH_BONUS), STRENGTH_BONUS));
-            this.counter--;
-        }
+        // 战斗开始时获得8层金属化
+        this.flash();
+        addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new MetallicizePower(AbstractDungeon.player, METALLICIZE_AMOUNT), METALLICIZE_AMOUNT));
     }
 
     @Override
     public AbstractRelic makeCopy() {
-        return new Spinach();
+        return new Coconut();
     }
 }

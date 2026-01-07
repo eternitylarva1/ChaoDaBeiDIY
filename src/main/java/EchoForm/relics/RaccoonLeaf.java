@@ -5,14 +5,15 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.IntangiblePlayerPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import EchoForm.powers.InvinciblePower;
 
 public class RaccoonLeaf extends CustomRelic {
     public static final String ID = "echoForm:RaccoonLeaf";
@@ -36,8 +37,7 @@ public class RaccoonLeaf extends CustomRelic {
     public void atBattleStart() {
         this.flash();
         // 角色无敌（出牌后失效）
-        // 使用IntangiblePlayerPower来实现无敌效果
-        addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, INTANGIBLE_TURNS), INTANGIBLE_TURNS));
+        addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new InvinciblePower(AbstractDungeon.player, INTANGIBLE_TURNS), INTANGIBLE_TURNS));
     }
 
     @Override
@@ -45,8 +45,8 @@ public class RaccoonLeaf extends CustomRelic {
         // 出牌后失效
         this.flash();
         // 移除无敌效果
-        if (AbstractDungeon.player.hasPower(IntangiblePlayerPower.POWER_ID)) {
-            addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new IntangiblePlayerPower(AbstractDungeon.player, 0), 0));
+        if (AbstractDungeon.player.hasPower(InvinciblePower.POWER_ID)) {
+            addToBot((AbstractGameAction)new RemoveSpecificPowerAction(AbstractDungeon.player, AbstractDungeon.player, InvinciblePower.POWER_ID));
         }
     }
 

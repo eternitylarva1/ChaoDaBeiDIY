@@ -20,7 +20,6 @@ public class OliveBranch extends CustomRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     private static final String IMG = "echoFormResources/images/relics/OliveBranch.png";
     
-    private int extraTurnsThisBattle = 0;
     private static final int MAX_EXTRA_TURNS = 2;
 
     public OliveBranch() {
@@ -34,13 +33,13 @@ public class OliveBranch extends CustomRelic {
 
     @Override
     public void atBattleStart() {
-        this.extraTurnsThisBattle = 0;
+        this.counter = 0;
     }
 
     @Override
     public void onPlayerEndTurn() {
         // 回合结束时，如果场上的怪物都是满血，额外获得一回合
-        if (this.extraTurnsThisBattle < MAX_EXTRA_TURNS) {
+        if (this.counter < MAX_EXTRA_TURNS) {
             boolean allMonstersFullHealth = true;
             for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
                 if (!m.isDeadOrEscaped() && m.currentHealth < m.maxHealth) {
@@ -51,7 +50,7 @@ public class OliveBranch extends CustomRelic {
             
             if (allMonstersFullHealth && !AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 this.flash();
-                this.extraTurnsThisBattle++;
+                this.counter++;
                 // 额外获得一回合：抽5张牌，获得3点能量
                 addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 5));
                 addToBot((AbstractGameAction)new GainEnergyAction(3));

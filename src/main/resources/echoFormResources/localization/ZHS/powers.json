@@ -17,7 +17,6 @@
   "UltimateComputePower": {
     "NAME": "极限算力",
     "DESCRIPTIONS": [
-      "充能球栏位减一。",
       "激发充能球时，其他充能球使用1次被动能力。"
     ]
   },
@@ -33,16 +32,10 @@
       "每打出10张能力牌，进入神格。"
     ]
   },
-  "DarkEmbracePower": {
-    "NAME": "黑暗之拥",
+  "echoForm:Invincible": {
+    "NAME": "无敌",
     "DESCRIPTIONS": [
-      "能力牌会额外触发消耗效果。"
-    ]
-  },
-  "RitualPower": {
-    "NAME": "仪式",
-    "DESCRIPTIONS": [
-      "在每回合开始时，获得 !M! 点力量。"
+      "本回合内免疫所有伤害。"
     ]
   }
 }

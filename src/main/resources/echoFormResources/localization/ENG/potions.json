@@ -1,0 +1,8 @@
+{
+  "echoForm:MilkPotion": {
+    "NAME": "Milk",
+    "DESCRIPTIONS": [
+      "Heal 2 HP. Remove all debuffs."
+    ]
+  }
+}

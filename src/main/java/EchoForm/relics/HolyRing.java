@@ -21,8 +21,6 @@ public class HolyRing extends CustomRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     private static final String IMG = "echoFormResources/images/relics/HolyRing.png";
     
-    private int energyGainedThisTurn = 0;
-
     public HolyRing() {
         super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.MAGICAL);
     }
@@ -35,7 +33,7 @@ public class HolyRing extends CustomRelic {
     @Override
     public void atTurnStart() {
         this.flash();
-        this.energyGainedThisTurn = 0;
+        this.counter = 0;
         // 每回合开始时，额外抽两张牌
         addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 2));
         
@@ -58,10 +56,10 @@ public class HolyRing extends CustomRelic {
     @Override
     public void onExhaust(AbstractCard card) {
         // 当弃置牌时，获得能量（每回合最多两点）
-        if (this.energyGainedThisTurn < 2) {
+        if (this.counter < 2) {
             this.flash();
             addToBot((AbstractGameAction)new GainEnergyAction(1));
-            this.energyGainedThisTurn++;
+            this.counter++;
         }
     }
 
