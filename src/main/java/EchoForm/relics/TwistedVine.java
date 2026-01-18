@@ -5,7 +5,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -34,9 +33,7 @@ public class TwistedVine extends CustomRelic {
 
     @Override
     public void onEnterRoom(AbstractRoom room) {
-        // 所有？房间变为特殊的普通敌人战斗，其中敌人的最大生命降低25%
-        // 这个效果需要修改房间生成逻辑
-        // 暂时简化实现
+        // 房间类型修改由TwistedVinePatch处理
     }
 
     @Override
@@ -55,7 +52,11 @@ public class TwistedVine extends CustomRelic {
     @Override
     public void onVictory() {
         // 在战斗结束后额外掉落一个遗物
-        // 暂时简化实现
+        if (AbstractDungeon.getCurrRoom() != null &&
+            AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
+            // 添加一个随机遗物到奖励中
+            AbstractDungeon.getCurrRoom().addRelicToRewards(AbstractDungeon.returnRandomRelic(AbstractRelic.RelicTier.COMMON));
+        }
     }
 
     @Override
