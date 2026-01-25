@@ -28,7 +28,7 @@ public class ConfusingMushroom extends CustomRelic {
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0];
     }
 
     @Override

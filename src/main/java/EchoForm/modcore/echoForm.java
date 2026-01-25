@@ -26,6 +26,7 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -42,7 +43,7 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
         BaseMod.subscribe(this); // 告诉basemod你要订阅事件
     }
     public static int turn=0;
-    public static final String MyModID = "echoForm";
+    public static final String MyModID = "Chaodabei";
     ModPanel settingsPanel = new ModPanel();
     public static SpireConfig config;
     public static boolean hasselected=false;
@@ -65,43 +66,19 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
 
     @Override
     public void receiveEditRelics() {
-        BaseMod.addRelic(new Huixiang(), RelicType.SHARED);
-        BaseMod.addRelic(new DemonBlood(), RelicType.SHARED);
-        BaseMod.addRelic(new HandShield(), RelicType.SHARED);
-        BaseMod.addRelic(new SmallStone(), RelicType.SHARED);
-        BaseMod.addRelic(new HolyRing(), RelicType.SHARED);
-        BaseMod.addRelic(new PerfectCore(), RelicType.SHARED);
-        BaseMod.addRelic(new PrimordialWater(), RelicType.SHARED);
-        BaseMod.addRelic(new FamelessCrown(), RelicType.SHARED);
-        BaseMod.addRelic(new OliveBranch(), RelicType.SHARED);
-        BaseMod.addRelic(new BlackboardArmor(), RelicType.SHARED);
-        BaseMod.addRelic(new Spinach(), RelicType.SHARED);
-        BaseMod.addRelic(new ConfusingMushroom(), RelicType.SHARED);
-        BaseMod.addRelic(new TungstenCup(), RelicType.SHARED);
-        BaseMod.addRelic(new TowerCurse(), RelicType.SHARED);
-        BaseMod.addRelic(new Taurus(), RelicType.SHARED);
-        BaseMod.addRelic(new CursedEye(), RelicType.SHARED);
-        BaseMod.addRelic(new RaccoonLeaf(), RelicType.SHARED);
-        BaseMod.addRelic(new FoolWizardHat(), RelicType.SHARED);
-        BaseMod.addRelic(new SoyMilk(), RelicType.SHARED);
-        BaseMod.addRelic(new ChessPiece(), RelicType.SHARED);
-        BaseMod.addRelic(new Coconut(), RelicType.SHARED);
-        BaseMod.addRelic(new DarkContract(), RelicType.SHARED);
-        BaseMod.addRelic(new HypnoticWatch(), RelicType.SHARED);
-        BaseMod.addRelic(new Portal(), RelicType.SHARED);
-        BaseMod.addRelic(new Tombstone(), RelicType.SHARED);
-        BaseMod.addRelic(new SteleFragment(), RelicType.SHARED);
-        BaseMod.addRelic(new RitualFeatherCrown(), RelicType.SHARED);
-        BaseMod.addRelic(new AngryFlower(), RelicType.SHARED);
-        BaseMod.addRelic(new TwistedVine(), RelicType.SHARED);
-        BaseMod.addRelic(new Plate(), RelicType.SHARED);
-        BaseMod.addRelic(new MilkBucket(), RelicType.SHARED);
-        BaseMod.addRelic(new Fireworks(), RelicType.SHARED);
-    
+        new AutoAdd(MyModID)
+            .packageFilter(DemonBlood.class)
+            .any(AbstractRelic.class, (info, relic) -> {
+                BaseMod.addRelic(relic, RelicType.SHARED);
+
+                    UnlockTracker.markRelicAsSeen(relic.relicId);
+
+            });
     }
 
     @Override
     public void receiveEditCards() {
+        /*
         BaseMod.addCard(new Bloodfall());
         BaseMod.addCard(new BurningSword());
         BaseMod.addCard(new Neurotoxin());
@@ -112,7 +89,7 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
         BaseMod.addCard(new NightHunt());
         BaseMod.addCard(new MachineRage());
         BaseMod.addCard(new MachineFormat());
-        BaseMod.addCard(new SleeveDanceMeteor());
+        BaseMod.addCard(new SleeveDanceMeteor());*/
     }
 
     @Override
@@ -170,6 +147,11 @@ firemap.put(i,istrue);
         String json = Gdx.files.internal("echoFormResources/localization/" + lang + "/keywords.json")
                 .readString(String.valueOf(StandardCharsets.UTF_8));
         Keyword[] keywords = gson.fromJson(json, Keyword[].class);
+        if (keywords != null) {
+            for (Keyword keyword : keywords) {
+                BaseMod.addKeyword(MyModID, keyword.NAMES[0], keyword.NAMES, keyword.DESCRIPTION);
+            }
+        }
 
     }
 
@@ -187,7 +169,6 @@ firemap.put(i,istrue);
 
     @Override
     public void receivePostDungeonInitialize() {
-        AbstractRelic relic=new Huixiang();
-        relic.instantObtain();
+
     }
 }

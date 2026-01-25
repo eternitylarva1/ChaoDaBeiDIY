@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.rooms.MonsterRoom;
  * TwistedVinePatch - 修改房间类型
  * 当玩家拥有TwistedVine遗物时，将进入的事件房间替换为普通怪物房间
  */
-@SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition")
+@SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition",paramtypez = {})
 public class TwistedVinePatch {
     
     @SpirePrefixPatch
