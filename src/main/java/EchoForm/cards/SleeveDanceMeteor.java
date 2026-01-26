@@ -1,6 +1,6 @@
 package EchoForm.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
@@ -17,16 +17,16 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class SleeveDanceMeteor extends AbstractCard {
-    public static final String ID = "echoForm:SleeveDanceMeteor";
+public class SleeveDanceMeteor extends CustomCard {
+    public static final String ID = "SleeveDanceMeteor";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final String IMG_PATH = "echoFormResources/images/cards/SleeveDanceMeteor.png";
+    private static final String IMG_PATH = "echoFormResources/images/cards/SleeveDanceMeteor_skill.png";
     private static final int COST = 3;
 
     public SleeveDanceMeteor() {
-        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.SKILL, CardColor.COLORLESS, CardRarity.RARE, CardTarget.SELF);
+        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.SKILL, CardColor.PURPLE, CardRarity.RARE, CardTarget.SELF);
         this.exhaust = true;
     }
 

@@ -1,6 +1,6 @@
 package EchoForm.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -11,12 +11,12 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 
-public class BoneScythe extends AbstractCard {
-    public static final String ID = "echoForm:BoneScythe";
+public class BoneScythe extends CustomCard {
+    public static final String ID = "BoneScythe";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final String IMG_PATH = "echoFormResources/images/cards/BoneScythe.png";
+    private static final String IMG_PATH = "echoFormResources/images/cards/BoneScythe_attack.png";
     private static final int COST = 1;
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DAMAGE = 3;

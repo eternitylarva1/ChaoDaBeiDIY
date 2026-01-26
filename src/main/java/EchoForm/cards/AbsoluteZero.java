@@ -1,6 +1,7 @@
 package EchoForm.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.unique.RetainCardsAction;
@@ -15,18 +16,18 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.Frost;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class AbsoluteZero extends AbstractCard {
-    public static final String ID = "echoForm:AbsoluteZero";
+public class AbsoluteZero extends CustomCard {
+    public static final String ID = "AbsoluteZero";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final String IMG_PATH = "echoFormResources/images/cards/AbsoluteZero.png";
+    private static final String IMG_PATH = "echoFormResources/images/cards/AbsoluteZero_power.png";
     private static final int COST = 1;
     private static final int FROST_ORBS = 2;
     private static final int UPGRADE_PLUS_FROST_ORBS = 1;
 
     public AbsoluteZero() {
-        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.POWER, CardColor.BLUE, CardRarity.RARE, CardTarget.SELF);
+        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.POWER, CardColor.BLUE, CardRarity.UNCOMMON, CardTarget.SELF);
         this.baseMagicNumber = FROST_ORBS;
         this.magicNumber = this.baseMagicNumber;
     }

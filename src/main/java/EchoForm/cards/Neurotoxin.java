@@ -1,6 +1,20 @@
 package EchoForm.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import EchoForm.powers.NeurotoxinPower;
+import basemod.AutoAdd;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.PoisonPower;
+
+
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,19 +25,19 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.PoisonPower;
 import EchoForm.powers.NeurotoxinPower;
-
-public class Neurotoxin extends AbstractCard {
-    public static final String ID = "echoForm:Neurotoxin";
+@AutoAdd.Ignore
+public class Neurotoxin extends CustomCard {
+    public static final String ID = "Neurotoxin";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final String IMG_PATH = "echoFormResources/images/cards/Neurotoxin.png";
+    private static final String IMG_PATH = "echoFormResources/images/cards/Neurotoxin_power.png";
     private static final int COST = 1;
     private static final int POISON = 5;
     private static final int UPGRADE_PLUS_POISON = 3;
 
     public Neurotoxin() {
-        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.SKILL, CardColor.GREEN, CardRarity.RARE, CardTarget.ENEMY);
+        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.POWER, CardColor.GREEN, CardRarity.UNCOMMON, CardTarget.ENEMY);
         this.baseMagicNumber = POISON;
         this.magicNumber = this.baseMagicNumber;
     }

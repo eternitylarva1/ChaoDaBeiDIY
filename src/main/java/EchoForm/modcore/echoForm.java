@@ -24,6 +24,7 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -78,18 +79,11 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
 
     @Override
     public void receiveEditCards() {
-        /*
-        BaseMod.addCard(new Bloodfall());
-        BaseMod.addCard(new BurningSword());
-        BaseMod.addCard(new Neurotoxin());
-        BaseMod.addCard(new MachineSilence());
-        BaseMod.addCard(new UltimateCompute());
-        BaseMod.addCard(new AbsoluteZero());
-        BaseMod.addCard(new BoneScythe());
-        BaseMod.addCard(new NightHunt());
-        BaseMod.addCard(new MachineRage());
-        BaseMod.addCard(new MachineFormat());
-        BaseMod.addCard(new SleeveDanceMeteor());*/
+        new AutoAdd(MyModID)
+            .packageFilter(AbsoluteZero.class)
+            .any(AbstractCard.class, (info, card) -> {
+                BaseMod.addCard(card);
+            });
     }
 
     @Override
@@ -123,19 +117,7 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
     public void receiveOnBattleStart(AbstractRoom abstractRoom) {
 
     }
-   public static void initializeHashmap(){
-        if (AbstractDungeon.player==null|| !CardCrawlGame.isInARun()){
-            return;
-        }
-       com.megacrit.cardcrawl.random.Random rng=new com.megacrit.cardcrawl.random.Random(seed);
 
-        for(int i=0;i<1000;i++){
-            boolean istrue;
-            istrue=rng.randomBoolean(0.7f);
-firemap.put(i,istrue);
-
-        }
-   }
     @Override
     public void receiveEditKeywords() {
         Gson gson = new Gson();

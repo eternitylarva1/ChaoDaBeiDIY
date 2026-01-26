@@ -1,6 +1,6 @@
 package EchoForm.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.EvokeAllOrbsAction;
@@ -17,12 +17,12 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 import java.util.ArrayList;
 
-public class MachineSilence extends AbstractCard {
-    public static final String ID = "echoForm:MachineSilence";
+public class MachineSilence extends CustomCard {
+    public static final String ID = "MachineSilence";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final String IMG_PATH = "echoFormResources/images/cards/MachineSilence.png";
+    private static final String IMG_PATH = "echoFormResources/images/cards/MachineSilence_skill.png";
     private static final int COST = 1;
     private static final int EXTRA_ORBS = 1;
     private static final int UPGRADE_PLUS_EXTRA_ORBS = 1;

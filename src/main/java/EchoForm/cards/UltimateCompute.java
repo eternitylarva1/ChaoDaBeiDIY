@@ -1,6 +1,6 @@
 package EchoForm.cards;
 
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
@@ -13,17 +13,17 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import EchoForm.powers.UltimateComputePower;
 
-public class UltimateCompute extends AbstractCard {
-    public static final String ID = "echoForm:UltimateCompute";
+public class UltimateCompute extends CustomCard {
+    public static final String ID = "UltimateCompute";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
-    private static final String IMG_PATH = "echoFormResources/images/cards/UltimateCompute.png";
+    private static final String IMG_PATH = "echoFormResources/images/cards/UltimateCompute_power.png";
     private static final int COST = 1;
     private static final int MAGIC_NUMBER = 1;
 
     public UltimateCompute() {
-        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.SKILL, CardColor.BLUE, CardRarity.RARE, CardTarget.SELF);
+        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.POWER, CardColor.BLUE, CardRarity.RARE, CardTarget.SELF);
         this.magicNumber = this.baseMagicNumber = MAGIC_NUMBER;
     }
 
