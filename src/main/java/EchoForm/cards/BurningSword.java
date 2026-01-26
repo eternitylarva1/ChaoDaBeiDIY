@@ -2,10 +2,12 @@ package EchoForm.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.ExhaustAction;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
+import com.megacrit.cardcrawl.cards.green.Eviscerate;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -31,17 +33,6 @@ public class BurningSword extends CustomCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 造成伤害
         addToBot((AbstractGameAction)new DamageAction(m, new DamageInfo(p, this.damage, this.damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-    }
-
-    @Override
-    public void triggerOnCardPlayed(AbstractCard playedCard) {
-        // 当有牌被消耗时，减少这张牌的费用
-        if (playedCard.exhaust) {
-            if (this.costForTurn > 0) {
-                this.costForTurn--;
-                this.isCostModified = true;
-            }
-        }
     }
 
     @Override

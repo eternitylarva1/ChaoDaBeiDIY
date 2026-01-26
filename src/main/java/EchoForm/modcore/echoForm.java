@@ -39,11 +39,12 @@ import static com.megacrit.cardcrawl.core.Settings.seed;
 
 
 @SpireInitializer
-public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber, EditCardsSubscriber, OnPlayerTurnStartSubscriber { // 实现接口
+public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber, EditCardsSubscriber, OnPlayerTurnStartSubscriber, PostExhaustSubscriber, PostDrawSubscriber { // 实现接口
     public echoForm() {
         BaseMod.subscribe(this); // 告诉basemod你要订阅事件
     }
     public static int turn=0;
+    public static int exhaustCount=0; // 每回合消耗卡牌的计数
     public static final String MyModID = "Chaodabei";
     ModPanel settingsPanel = new ModPanel();
     public static SpireConfig config;
@@ -83,6 +84,7 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
             .packageFilter(AbsoluteZero.class)
             .any(AbstractCard.class, (info, card) -> {
                 BaseMod.addCard(card);
+                UnlockTracker.markCardAsSeen(card.cardID);
             });
     }
 
@@ -139,8 +141,8 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
 
     @Override
     public void receiveOnPlayerTurnStart() {
-
-
+        // 每回合开始时重置消耗计数
+        exhaustCount = 0;
     }
 
     @Override
@@ -152,5 +154,38 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
     @Override
     public void receivePostDungeonInitialize() {
 
+    }
+
+    @Override
+    public void receivePostExhaust(AbstractCard card) {
+        // 增加消耗计数
+        exhaustCount++;
+        
+        // 当有卡牌被消耗时，检查手牌中的BurningSword并减少其费用
+        if (AbstractDungeon.player != null && AbstractDungeon.player.hand != null) {
+            for (AbstractCard c : AbstractDungeon.player.hand.group) {
+                if (c instanceof BurningSword) {
+                    BurningSword burningSword = (BurningSword) c;
+                    if (burningSword.costForTurn > 0) {
+                        burningSword.costForTurn--;
+                        burningSword.isCostModified = true;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void receivePostDraw(AbstractCard card) {
+        // 当抽到BurningSword时，根据消耗次数减少费用
+        if (card instanceof BurningSword) {
+            BurningSword burningSword = (BurningSword) card;
+            // 根据消耗次数减少费用，但不少于0
+            int reduction = Math.min(exhaustCount, burningSword.costForTurn);
+            burningSword.costForTurn -= reduction;
+            if (reduction > 0) {
+                burningSword.isCostModified = true;
+            }
+        }
     }
 }

@@ -34,14 +34,16 @@ public class Bloodfall extends CustomCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        Bloodfall.this.applyPowers();
+        final int totaldamage=this.damage;
         // 计算手中所有攻击牌的伤害总和
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                Bloodfall.this.applyPowers();
+
 
                 // 对所有敌人造成伤害
-                if (Bloodfall.this.damage > 0) {
+                if (totaldamage> 0) {
                     int[] damageArray = new int[AbstractDungeon.getMonsters().monsters.size()];
                     for (int i = 0; i < damageArray.length; i++) {
                         damageArray[i] = Bloodfall.this.damage;
