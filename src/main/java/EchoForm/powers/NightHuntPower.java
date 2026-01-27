@@ -21,8 +21,8 @@ public class NightHuntPower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
-    private static final String IMG_PATH_128 = "echoFormResources/images/powers/shiyingxing.png";
-    private static final String IMG_PATH_48 = "echoFormResources/images/powers/shiyingxing.png";
+    private static final String IMG_PATH_128 = "echoFormResources/images/powers/NightHuntPowerPower84.png";
+    private static final String IMG_PATH_48 = "echoFormResources/images/powers/NightHuntPowerPower32.png";
 
     private static TextureAtlas.AtlasRegion region128;
     private static TextureAtlas.AtlasRegion region48;
@@ -41,7 +41,7 @@ public class NightHuntPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        this.img=ImageMaster.loadImage(IMG_PATH_128);
+        this.img=ImageMaster.loadImage(IMG_PATH_48);
         this.region128 = region128;
         this.region48 = region48;
     }

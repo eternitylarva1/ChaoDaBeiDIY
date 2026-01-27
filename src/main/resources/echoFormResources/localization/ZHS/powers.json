@@ -29,9 +29,8 @@
   "MachineFormatPower": {
     "NAME": "机格",
     "DESCRIPTIONS": [
-      "每打出",
-      "张能力牌，进入神格。还需",
-      "张。"
+      "每打出一张能力牌，获得",
+      "层真言"
     ]
   },
   "echoForm:Invincible": {

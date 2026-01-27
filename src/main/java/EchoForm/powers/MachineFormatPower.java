@@ -13,7 +13,10 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.watcher.MantraPower;
+import com.megacrit.cardcrawl.relics.Damaru;
 
 public class MachineFormatPower extends AbstractPower {
     public static final String POWER_ID = "MachineFormatPower";
@@ -21,8 +24,8 @@ public class MachineFormatPower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
-    private static final String IMG_PATH_128 = "echoFormResources/images/powers/MachineFormatPower.png";
-    private static final String IMG_PATH_48 = "echoFormResources/images/powers/MachineFormatPower.png";
+    private static final String IMG_PATH_128 = "echoFormResources/images/powers/MachineFormatPowerPower84.png";
+    private static final String IMG_PATH_48 = "echoFormResources/images/powers/MachineFormatPowerPower32.png";
 
     private static TextureAtlas.AtlasRegion region128;
     private static TextureAtlas.AtlasRegion region48;
@@ -43,29 +46,20 @@ public class MachineFormatPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        this.img=ImageMaster.loadImage(IMG_PATH_128);
-        this.region128 = region128;
-        this.region48 = region48;
+        this.img=ImageMaster.loadImage(IMG_PATH_48);
+
     }
 
-    @Override
-    public void onCardDraw(AbstractCard card) {
-        if (card.type == AbstractCard.CardType.SKILL) {
-            this.skillCount++;
+
+    public void onPlayCard(AbstractCard card, AbstractMonster m) {
+        if (card.type == AbstractCard.CardType.POWER) {
+            this.addToBot(new ApplyPowerAction(AbstractDungeon.player, (AbstractCreature)null, new MantraPower(AbstractDungeon.player, 1), 1));
             this.updateDescription();
-            
-            if (this.skillCount >= this.amount) {
-                this.flash();
-                // 进入神格姿态
-                addToBot((AbstractGameAction)new ChangeStanceAction("Divinity"));
-                // 移除这个能力
-                addToBot((AbstractGameAction)new RemoveSpecificPowerAction(this.owner, this.owner, this.ID));
-            }
+
         }
     }
-
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + (this.amount - this.skillCount) + DESCRIPTIONS[2];
+        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] ;
     }
 }

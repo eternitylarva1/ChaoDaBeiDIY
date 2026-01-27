@@ -18,8 +18,8 @@ public class InvinciblePower extends AbstractPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
-    private static final String IMG_PATH_128 = "echoFormResources/images/powers/Invicible.png";
-    private static final String IMG_PATH_48 = "echoFormResources/images/powers/Invicible.png";
+    private static final String IMG_PATH_128 = "echoFormResources/images/powers/InviciblePower84.png";
+    private static final String IMG_PATH_48 = "echoFormResources/images/powers/InviciblePower32.png";
 
     private static TextureAtlas.AtlasRegion region128;
     private static TextureAtlas.AtlasRegion region48;
@@ -40,7 +40,7 @@ public class InvinciblePower extends AbstractPower {
         this.type = PowerType.BUFF;
         this.isTurnBased = true;
         updateDescription();
-        this.img=ImageMaster.loadImage(IMG_PATH_128);
+        this.img=ImageMaster.loadImage(IMG_PATH_48);
 
         this.priority = 75;
     }

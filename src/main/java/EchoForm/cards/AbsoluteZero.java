@@ -1,6 +1,9 @@
 package EchoForm.cards;
 
+import EchoForm.utils.TextureUtils;
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -10,6 +13,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -63,13 +67,29 @@ public class AbsoluteZero extends CustomCard {
         public static final String NAME = powerStrings.NAME;
         public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
         
+        private static final String IMG_PATH_128 = "echoFormResources/images/powers/AbsoluteZeroPowerPower84.png";
+        private static final String IMG_PATH_48 = "echoFormResources/images/powers/AbsoluteZeroPowerPower32.png";
+
+        private static TextureAtlas.AtlasRegion region128;
+        private static TextureAtlas.AtlasRegion region48;
+        
+        static {
+            Texture tex = ImageMaster.loadImage(IMG_PATH_128);
+            if (tex != null) {
+                region128 = new TextureAtlas.AtlasRegion(tex, 0, 0, 84, 84);
+                region48 = TextureUtils.resizeTexture(region128, 48, 48);
+            }
+        }
+        
         public AbsoluteZeroPower(AbstractCreature owner) {
             this.name = NAME;
             this.ID = POWER_ID;
             this.owner = owner;
             this.amount = -1;
             this.updateDescription();
-            this.loadRegion("focus");
+            this.img = ImageMaster.loadImage(IMG_PATH_48);
+            this.region128 = region128;
+            this.region48 = region48;
             this.type = PowerType.BUFF;
         }
         

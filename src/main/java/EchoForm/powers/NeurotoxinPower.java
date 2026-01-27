@@ -21,8 +21,8 @@ public class NeurotoxinPower extends AbstractPower {
     public static final String NAME;
     public static final String[] DESCRIPTIONS;
     
-    private static final String IMG_PATH_128 = "echoFormResources/images/powers/NeurotoxinPower.png";
-    private static final String IMG_PATH_48 = "echoFormResources/images/powers/NeurotoxinPower.png";
+    private static final String IMG_PATH_128 = "echoFormResources/images/powers/NeurotoxinPowerPower84.png";
+    private static final String IMG_PATH_48 = "echoFormResources/images/powers/NeurotoxinPowerPower32.png";
 
     private static TextureAtlas.AtlasRegion region128;
     private static TextureAtlas.AtlasRegion region48;
@@ -45,7 +45,7 @@ public class NeurotoxinPower extends AbstractPower {
         this.owner = owner;
         this.amount = amount;
         this.updateDescription();
-        this.img=ImageMaster.loadImage(IMG_PATH_128);
+        this.img=ImageMaster.loadImage(IMG_PATH_48);
         this.region128 = region128;
         this.region48 = region48;
         this.type = AbstractPower.PowerType.DEBUFF;

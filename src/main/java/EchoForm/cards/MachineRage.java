@@ -23,7 +23,7 @@ public class MachineRage extends CustomCard {
     private static final int VULNERABLE_AMOUNT = 3;
 
     public MachineRage() {
-        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.ATTACK, CardColor.BLUE, CardRarity.COMMON, CardTarget.ALL_ENEMY);
+        super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.ATTACK, CardColor.BLUE, CardRarity.COMMON, CardTarget.ENEMY);
         this.baseDamage = DAMAGE;
         this.magicNumber = this.baseMagicNumber = VULNERABLE_AMOUNT;
     }
