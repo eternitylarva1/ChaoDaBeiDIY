@@ -29,7 +29,9 @@
   "MachineFormatPower": {
     "NAME": "机格",
     "DESCRIPTIONS": [
-      "每打出10张能力牌，进入神格。"
+      "每打出",
+      "张能力牌，进入神格。还需",
+      "张。"
     ]
   },
   "echoForm:Invincible": {

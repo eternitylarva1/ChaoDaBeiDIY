@@ -3,7 +3,7 @@
   "name": "超大杯DIY获奖作品",
   "author_list": ["Dieyou"],
   "description": "超大杯DIY获奖作品",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "sts_version": "12-22-2020",
   "mts_version": "3.23.2",
   "dependencies": ["basemod","stslib"]

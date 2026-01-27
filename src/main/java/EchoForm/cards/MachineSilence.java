@@ -57,7 +57,7 @@ public class MachineSilence extends CustomCard {
     
     // 创建一个临时能力类
     private static class MachineSilencePower extends AbstractPower {
-        public static final String POWER_ID = "echoForm:MachineSilencePower";
+        public static final String POWER_ID = "MachineSilencePower";
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         public static final String NAME = powerStrings.NAME;
         public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;

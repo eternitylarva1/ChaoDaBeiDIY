@@ -30,6 +30,33 @@
 
   ]
 },
+  "MachineFormatPower": {
+    "NAME": "Machine Format",
+    "DESCRIPTIONS": [
+      "Every ",
+      " skill cards, enter Divinity. Need ",
+      " more."
+    ]
+  },
+  "NeurotoxinPower": {
+    "NAME": "Neurotoxin",
+    "DESCRIPTIONS": [
+      "Poisoned enemies attack random targets.",
+      "Monsters that won't attack the player this turn will have gray health bars."
+    ]
+  },
+  "UltimateComputePower": {
+    "NAME": "Ultimate Compute",
+    "DESCRIPTIONS": [
+      "When evoking an orb, other orbs use their passive effect once."
+    ]
+  },
+  "NightHuntPower": {
+    "NAME": "Night Hunt",
+    "DESCRIPTIONS": [
+      "Colorless cards are played twice this turn."
+    ]
+  },
   "echoForm:Invincible": {
     "NAME": "Invincible",
     "DESCRIPTIONS": [

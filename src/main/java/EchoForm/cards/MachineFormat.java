@@ -1,6 +1,7 @@
 package EchoForm.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -28,7 +29,7 @@ public class MachineFormat extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 给予玩家机格能力，每打出10张能力牌进入神格
-        addToBot((AbstractGameAction)new com.megacrit.cardcrawl.actions.common.ApplyPowerAction(p, p, new MachineFormatPower(p, this.magicNumber), this.magicNumber));
+        addToBot((AbstractGameAction)new ApplyPowerAction(p, p, new MachineFormatPower(p, this.magicNumber), this.magicNumber));
         
         // 将这张牌的复制放入抽牌堆
         AbstractCard copy = this.makeStatEquivalentCopy();

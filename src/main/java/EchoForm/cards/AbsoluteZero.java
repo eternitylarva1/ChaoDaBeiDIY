@@ -58,7 +58,7 @@ public class AbsoluteZero extends CustomCard {
     
     // 绝对零度能力
     private static class AbsoluteZeroPower extends AbstractPower {
-        public static final String POWER_ID = "echoForm:AbsoluteZeroPower";
+        public static final String POWER_ID = "AbsoluteZeroPower";
         private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
         public static final String NAME = powerStrings.NAME;
         public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
