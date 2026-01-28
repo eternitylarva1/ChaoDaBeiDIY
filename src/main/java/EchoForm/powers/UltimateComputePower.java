@@ -56,7 +56,7 @@ public class UltimateComputePower extends AbstractPower {
         // 激发充能球时，其他充能球使用1次被动能力
         for (AbstractOrb otherOrb : AbstractDungeon.player.orbs) {
             if (otherOrb != orb && otherOrb != null) {
-                otherOrb.onStartOfTurn();
+                otherOrb.onStartOfTurn() ;
             }
         }
     }
