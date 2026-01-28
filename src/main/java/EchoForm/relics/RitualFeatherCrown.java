@@ -38,6 +38,7 @@ public class RitualFeatherCrown extends CustomRelic {
         // 战斗开始时获得2层仪式
         this.flash();
         this.firstTurn = true;
+        this.counter = 0;
         // 使用原版RitualPower，每回合结束时增加2点力量
         addToBot((AbstractGameAction)new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RitualPower(AbstractDungeon.player, 2, true), 2));
     }
@@ -45,12 +46,13 @@ public class RitualFeatherCrown extends CustomRelic {
     @Override
     public void atTurnStart() {
         this.firstTurn = false;
+        this.counter ++;
     }
 
     @Override
     public boolean canPlay(AbstractCard card) {
         // 你在第一回合不能打出攻击牌
-        if (this.firstTurn && card.type == AbstractCard.CardType.ATTACK) {
+        if (this.counter==1 && card.type == AbstractCard.CardType.ATTACK) {
             return false;
         }
         return true;

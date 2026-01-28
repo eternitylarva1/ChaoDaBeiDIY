@@ -36,8 +36,9 @@ public class PerfectCore extends CustomRelic {
     }
 
     @Override
-    public void onEquip() {
-        // 游戏开始时，你获得一个球位、一点集中、一层缓冲、一层人工制品
+    public void atBattleStart() {
+
+
         // 增加一个球位
         addToBot((AbstractGameAction)new IncreaseMaxOrbAction(1));
         // 获得一点集中

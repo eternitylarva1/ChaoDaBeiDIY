@@ -42,7 +42,7 @@ public class HolyRing extends CustomRelic {
             addToBot((AbstractGameAction)new WaitAction(0.5f));
             // 这里需要让玩家选择要弃置的牌
             // 由于没有现成的Action，我们需要创建一个自定义的Action
-            // 暂时简化为：让玩家选择弃置牌，每弃置一张获得1点能量（最多2点）
+            // 暂时简化为：让玩家选择弃置牌，每弃置一张获得1点能量（最多2点）//todo 模仿Gambling Chip完成
         }
     }
 

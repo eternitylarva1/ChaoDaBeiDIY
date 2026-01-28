@@ -16,6 +16,7 @@ public class DarkContractPatch {
                 if (__instance.amount > 1) {
                     // 减少一张抽牌
                     __instance.amount -= 1;
+                    //todo 加入判断是否是卡牌抽取的(暂不修改)
                 }
             }
         }

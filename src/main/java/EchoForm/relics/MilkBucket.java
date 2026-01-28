@@ -7,7 +7,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.potions.PotionSlot;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.PotionBelt;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import EchoForm.potions.MilkPotion;
 
@@ -31,6 +33,8 @@ public class MilkBucket extends CustomRelic {
     public void onEquip() {
         // 拾起时，获得一个药水栏位
         AbstractDungeon.player.potionSlots++;
+      AbstractDungeon.player.potions.add(new PotionSlot(AbstractDungeon.player.potionSlots - 1));
+
     }
 
     @Override

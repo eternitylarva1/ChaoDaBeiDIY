@@ -22,7 +22,7 @@ public  class PrimordialWater extends CustomRelic implements ClickableRelic {
     public static final String[] DESCRIPTIONS = relicStrings.DESCRIPTIONS;
     private static final String IMG = "echoFormResources/images/relics/PrimordialWater.png";
     
-    private static final int MAX_MIRACLES = 6;
+    private static final int MAX_MIRACLES = 7;
 
     public PrimordialWater() {
         super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.BOSS, LandingSound.MAGICAL);

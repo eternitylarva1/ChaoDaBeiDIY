@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.events.AbstractEvent;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rewards.RewardItem;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
@@ -67,10 +68,7 @@ public class Tombstone extends CustomRelic {
     @Override
     public void onVictory() {
         // 战斗结束后额外掉落一个碑块
-        if (AbstractDungeon.getCurrRoom() instanceof RestRoom) {
-            // 在休息房间获得碑块
-            // 暂时简化实现，需要添加碑块遗物到玩家
-        }
+AbstractDungeon.getCurrRoom().rewards.add(new RewardItem(new SteleFragment()));
     }
 
     @Override

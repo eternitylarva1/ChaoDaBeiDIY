@@ -11,7 +11,9 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.ThreadAndNeedle;
 
 public class AngryFlower extends CustomRelic {
     public static final String ID = "echoForm:AngryFlower";
@@ -52,10 +54,10 @@ public class AngryFlower extends CustomRelic {
             if (armorAmount > MAX_ARMOR) {
                 armorAmount = MAX_ARMOR;
             }
+            //todo 待测试
             if (armorAmount > 0) {
-                // 使用格挡代替护甲
-                addToBot((AbstractGameAction)new GainBlockAction(AbstractDungeon.player, armorAmount));
-            }
+                this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new PlatedArmorPower(AbstractDungeon.player, armorAmount), armorAmount));
+ }
         }
     }
 

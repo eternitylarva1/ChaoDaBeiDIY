@@ -47,6 +47,7 @@ public class DemonBlood extends CustomRelic {
     @Override
     public void onEquip() {
         // 拾起时，向卡组中加入三张随机诅咒
+        //todo 改成真正的从所有诅咒牌里面抽取而不是预定义 CardLibrary
         ArrayList<AbstractCard> curses = new ArrayList<>();
         curses.add(new CurseOfTheBell());
         curses.add(new Doubt());
@@ -59,6 +60,7 @@ public class DemonBlood extends CustomRelic {
         curses.add(new Writhe());
         
         for (int i = 0; i < 3; i++) {
+            //todo 加入卡组啊，不是抽牌堆
             AbstractCard curse = curses.get(AbstractDungeon.cardRandomRng.random(curses.size() - 1)).makeCopy();
             AbstractDungeon.effectList.add(new com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect(curse, true, false));
         }

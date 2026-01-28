@@ -39,7 +39,7 @@ public class FamelessCrown extends CustomRelic {
         this.flash();
         // 每回合抽牌加1
         addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 1));
-        // 能量加3，每回合获得能量逐渐减少，不会减少到零
+        // 能量加3，每回合获得能量逐渐减少，不会减少到零 //todo 询问作者效果，有疑问
         if (this.counter > 0) {
             addToBot((AbstractGameAction)new GainEnergyAction(this.counter));
             this.counter--;

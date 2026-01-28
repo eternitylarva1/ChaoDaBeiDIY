@@ -19,7 +19,9 @@ public class PlatePatch {
                 if (AbstractDungeon.player.hasRelic("echoForm:Plate")) {
                     // 检查是否因敌人攻击失去格挡（amount > 0）
                     if (amount > 0) {
+
                         // 对所有敌人造成相当于失去格挡的伤害
+                        //todo 未能生效，等进一步测试后再修改
                         AbstractDungeon.actionManager.addToBottom(
                             new DamageAllEnemiesAction(
                                 null,

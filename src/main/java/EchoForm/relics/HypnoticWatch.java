@@ -32,6 +32,7 @@ public class HypnoticWatch extends CustomRelic {
         // 在前两个回合开始时，你可以自由选择敌人的意图
         // 这个效果需要修改敌人的意图显示逻辑
         // 暂时简化实现
+
     }
 
     @Override
