@@ -5,6 +5,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -32,17 +34,18 @@ public class TungstenCup extends CustomRelic {
     public int onPlayerHeal(int healAmount) {
         // 玩家回复生命时，增加一点
         this.flash();
-        // 这里需要实现一个机制来增加某种计数
-        // 暂时简化实现，返回原始治疗量
-        return healAmount;
+
+        return healAmount+1;
     }
 
-    @Override
-    public void onMonsterDeath(AbstractMonster m) {
-        // 敌人失去生命时，增加一点
-        this.flash();
-        // 这里需要实现一个机制来增加某种计数
-        // 暂时简化实现
+    public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
+        if (info.owner != null && info.type != DamageInfo.DamageType.HP_LOSS && info.type != DamageInfo.DamageType.THORNS && damageAmount > 0) {
+            this.flash();
+            this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            return damageAmount+1;
+        } else {
+            return damageAmount;
+        }
     }
 
     @Override

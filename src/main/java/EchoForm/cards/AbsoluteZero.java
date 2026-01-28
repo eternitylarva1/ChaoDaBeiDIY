@@ -94,7 +94,7 @@ public class AbsoluteZero extends CustomCard {
         }
         
         public void updateDescription() {
-            this.description = DESCRIPTIONS[0];
+            this.description = DESCRIPTIONS[0]+this.amount+DESCRIPTIONS[1];
         }
         
         // 回合结束时，每有一个冰霜充能球保留一张牌
@@ -106,7 +106,7 @@ public class AbsoluteZero extends CustomCard {
                     AbstractPlayer p = (AbstractPlayer)owner;
                     for (int i = 0; i < p.orbs.size(); i++) {
                         if (p.orbs.get(i) instanceof Frost) {
-                            frostCount++;
+                            frostCount+=this.amount;
                         }
                     }
                     

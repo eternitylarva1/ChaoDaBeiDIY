@@ -6,6 +6,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.actions.watcher.SkipEnemiesTurnAction;
+import com.megacrit.cardcrawl.cards.purple.Vault;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -32,11 +34,6 @@ public class OliveBranch extends CustomRelic {
     }
 
     @Override
-    public void atBattleStart() {
-        this.counter = 0;
-    }
-
-    @Override
     public void onPlayerEndTurn() {
         // 回合结束时，如果场上的怪物都是满血，额外获得一回合
         if (this.counter < MAX_EXTRA_TURNS) {
@@ -47,13 +44,11 @@ public class OliveBranch extends CustomRelic {
                     break;
                 }
             }
-            
+            //todo 待测试
             if (allMonstersFullHealth && !AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 this.flash();
-                this.counter++;
-                // 额外获得一回合：抽5张牌，获得3点能量
-                addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 5));
-                addToBot((AbstractGameAction)new GainEnergyAction(3));
+                //改为真正获得一回合
+                this.addToBot(new SkipEnemiesTurnAction());
             }
         }
     }

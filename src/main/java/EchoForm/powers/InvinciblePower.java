@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class InvinciblePower extends AbstractPower {
-    public static final String POWER_ID = "Invincible";
+    public static final String POWER_ID = "Invincible1";
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -61,13 +61,4 @@ public class InvinciblePower extends AbstractPower {
         this.description = DESCRIPTIONS[0];
     }
 
-    @Override
-    public void atEndOfRound() {
-        if (this.amount == 0) {
-            addToBot((AbstractGameAction)new RemoveSpecificPowerAction(this.owner, this.owner, POWER_ID));
-        } else {
-            this.amount--;
-            updateDescription();
-        }
-    }
 }

@@ -1,10 +1,7 @@
 package EchoForm.cards;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
-import com.megacrit.cardcrawl.actions.common.DiscardAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustAction;
-import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.actions.utility.NewQueueCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -52,8 +49,8 @@ public class SleeveDanceMeteor extends CustomCard {
                         addToBot((AbstractGameAction)new NewQueueCardAction(card, target, false, true));
                         break;
                     case 1: // 丢弃
-                        addToBot((AbstractGameAction)new DiscardAction(p, p, 1, false));
-                        break;
+                        addToBot(new DiscardSpecificCardAction(card));
+                      break;
                     case 2: // 复制
                         AbstractCard copy = card.makeSameInstanceOf();
                         addToBot((AbstractGameAction)new MakeTempCardInHandAction(copy, 1));

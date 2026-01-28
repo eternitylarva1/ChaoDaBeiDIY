@@ -22,7 +22,7 @@ public class NightHuntPower extends AbstractPower {
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
     
     private static final String IMG_PATH_128 = "echoFormResources/images/powers/NightHuntPowerPower84.png";
-    private static final String IMG_PATH_48 = "echoFormResources/images/powers/NightHuntPowerPower32.png";
+    private static final String IMG_PATH_48 = "echoFormResources/images/powers/NightHuntPowerPower84.png";
 
     private static TextureAtlas.AtlasRegion region128;
     private static TextureAtlas.AtlasRegion region48;

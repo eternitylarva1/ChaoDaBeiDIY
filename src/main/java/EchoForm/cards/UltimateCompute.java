@@ -3,6 +3,7 @@ package EchoForm.cards;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
+import com.megacrit.cardcrawl.actions.defect.DecreaseMaxOrbAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -30,7 +31,7 @@ public class UltimateCompute extends CustomCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         // 充能球栏位减一
-        addToBot((AbstractGameAction)new IncreaseMaxOrbAction(-1));
+        addToBot((AbstractGameAction)new DecreaseMaxOrbAction(1));
         
         // 给予极限算力能力
         addToBot((AbstractGameAction)new ApplyPowerAction(p, p, new UltimateComputePower(p, this.magicNumber), this.magicNumber));

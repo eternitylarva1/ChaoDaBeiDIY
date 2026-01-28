@@ -13,6 +13,12 @@
       "中毒的敌人攻击会命中随机目标。",
       "本回合不会攻击到角色的怪物头标会显示灰色。"
     ]
+  },"NightHuntPower": {
+    "NAME": "夜狩",
+    "DESCRIPTIONS": [
+      "本回合内 无色牌 会被额外打出",
+      "次"
+    ]
   },
   "UltimateComputePower": {
     "NAME": "极限算力",
@@ -23,7 +29,7 @@
   "AbsoluteZeroPower": {
     "NAME": "绝对零度",
     "DESCRIPTIONS": [
-      "回合结束时，每有一个冰霜充能球保留一张牌。"
+      "回合结束时，每有一个冰霜充能球保留","张牌。"
     ]
   },
   "MachineFormatPower": {
@@ -33,10 +39,10 @@
       "层真言"
     ]
   },
-  "echoForm:Invincible": {
+  "Invincible1": {
     "NAME": "无敌",
     "DESCRIPTIONS": [
-      "本回合内免疫所有伤害。"
+      "无敌直到你打出卡牌"
     ]
   }
 }

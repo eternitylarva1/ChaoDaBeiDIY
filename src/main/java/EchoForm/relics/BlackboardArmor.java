@@ -31,6 +31,7 @@ public class BlackboardArmor extends CustomRelic {
     @Override
     public void atTurnStart() {
         this.flash();
+        //todo 改为action
         // 回合开始时，如果敌人拥有格挡，你获得等量格挡
         int totalEnemyBlock = 0;
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {

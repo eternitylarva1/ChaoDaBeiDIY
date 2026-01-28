@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstract
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDrawPileAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.TheBomb;
+import com.megacrit.cardcrawl.cards.green.Setup;
 import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -40,8 +41,10 @@ public class TowerCurse extends CustomRelic {
             // 设置首次打出耗能为0
             bomb.costForTurn = 0;
             bomb.isCostModifiedForTurn = true;
+
             // 加入抽牌堆
             addToBot((AbstractGameAction)new MakeTempCardInDrawPileAction(bomb, 1, true, false));
+            bomb.freeToPlayOnce=true;
         }
     }
 

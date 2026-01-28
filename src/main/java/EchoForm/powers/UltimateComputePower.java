@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.EmotionChip;
 
 public class UltimateComputePower extends AbstractPower {
     public static final String POWER_ID = "UltimateComputePower";
@@ -57,6 +58,8 @@ public class UltimateComputePower extends AbstractPower {
         for (AbstractOrb otherOrb : AbstractDungeon.player.orbs) {
             if (otherOrb != orb && otherOrb != null) {
                 otherOrb.onStartOfTurn() ;
+                otherOrb.onEndOfTurn(); ;
+
             }
         }
     }

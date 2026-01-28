@@ -4,6 +4,7 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.ExhaustSpecificCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -44,7 +45,7 @@ public class ConfusingMushroom extends CustomRelic {
             this.flash();
             // 丢弃最左侧的卡牌
             AbstractCard leftmostCard = AbstractDungeon.player.hand.group.get(0);
-            addToBot((AbstractGameAction)new ExhaustSpecificCardAction(leftmostCard, AbstractDungeon.player.hand));
+            addToBot((AbstractGameAction)new DiscardSpecificCardAction(leftmostCard, AbstractDungeon.player.hand));
             // 抽一张牌
             addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 1));
         }
