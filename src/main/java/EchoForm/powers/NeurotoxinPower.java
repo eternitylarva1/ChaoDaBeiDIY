@@ -75,8 +75,30 @@ public class NeurotoxinPower extends AbstractPower {
             // 随机选择一个目标
             if (possibleTargets.size() > 1) {
                 AbstractCreature newTarget = possibleTargets.get(AbstractDungeon.cardRandomRng.random(possibleTargets.size() - 1));
-                // 这里需要修改怪物的攻击目标，但这需要更复杂的hook或patch
-                // 暂时只实现基础的中毒效果
+                
+                // 如果新目标不是玩家，则显示提示
+                if (newTarget != AbstractDungeon.player) {
+                    // 显示目标改变的视觉效果
+                    AbstractDungeon.topLevelEffects.add(new com.megacrit.cardcrawl.vfx.combat.RoomTintEffect(
+                        new com.badlogic.gdx.graphics.Color(0.0f, 1.0f, 0.0f, 0.3f), 0.5f));
+                }
+                
+                // 修改怪物的攻击意图目标
+                monster.intent = com.megacrit.cardcrawl.monsters.AbstractMonster.Intent.ATTACK;
+                monster.setMove((byte) 0, com.megacrit.cardcrawl.monsters.AbstractMonster.Intent.ATTACK,
+                               monster.getIntentDmg(), 0, newTarget instanceof AbstractMonster);
+            }
+        }
+    }
+    
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        // 在怪物回合结束时，重置怪物的攻击意图
+        if (!isPlayer) {
+            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
+                if (m.hasPower(POWER_ID)) {
+                    m.createIntent();
+                }
             }
         }
     }

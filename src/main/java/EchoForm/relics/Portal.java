@@ -9,6 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
+import com.megacrit.cardcrawl.monsters.exordium.GremlinFat;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
@@ -34,9 +35,18 @@ public class Portal extends CustomRelic {
         // 所有精英房间变为一个大颚虫
         if (room instanceof MonsterRoomElite) {
             this.flash();
-            // 替换精英房间中的怪物为大颚虫
-            // 暂时简化实现
-
+            
+            // 清空现有的怪物列表
+            room.monsters.monsters.clear();
+            
+            // 创建3个大颚虫
+            for (int i = 0; i < 3; i++) {
+                GremlinFat gremlinFat = new GremlinFat(-50.0F + i * 250.0F, 10.0F);
+                room.monsters.add(gremlinFat);
+            }
+            
+            // 初始化怪物
+            room.monsters.init();
         }
     }
 
