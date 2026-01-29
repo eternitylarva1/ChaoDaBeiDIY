@@ -54,7 +54,6 @@ public class AngryFlower extends CustomRelic {
             if (armorAmount > MAX_ARMOR) {
                 armorAmount = MAX_ARMOR;
             }
-            //todo 待测试
             if (armorAmount > 0) {
                 this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new PlatedArmorPower(AbstractDungeon.player, armorAmount), armorAmount));
  }

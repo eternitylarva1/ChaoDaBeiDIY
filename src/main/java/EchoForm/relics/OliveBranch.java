@@ -44,7 +44,6 @@ public class OliveBranch extends CustomRelic {
                     break;
                 }
             }
-            //todo 待测试
             if (allMonstersFullHealth && !AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 this.flash();
                 //改为真正获得一回合

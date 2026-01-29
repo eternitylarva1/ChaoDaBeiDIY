@@ -4,6 +4,7 @@ import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -31,18 +32,23 @@ public class BlackboardArmor extends CustomRelic {
     @Override
     public void atTurnStart() {
         this.flash();
-        //todo 改为action
-        // 回合开始时，如果敌人拥有格挡，你获得等量格挡
-        int totalEnemyBlock = 0;
-        for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-            if (!m.isDeadOrEscaped()) {
-                totalEnemyBlock += m.currentBlock;
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                int totalEnemyBlock = 0;
+                for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                    if (!m.isDeadOrEscaped()) {
+                        totalEnemyBlock += m.currentBlock;
+                    }
+                }
+
+                if (totalEnemyBlock > 0) {
+                    addToBot((AbstractGameAction)new GainBlockAction(AbstractDungeon.player, totalEnemyBlock));
+                }
+                isDone=true;
             }
-        }
-        
-        if (totalEnemyBlock > 0) {
-            addToBot((AbstractGameAction)new GainBlockAction(AbstractDungeon.player, totalEnemyBlock));
-        }
+        });
+
     }
 
     @Override

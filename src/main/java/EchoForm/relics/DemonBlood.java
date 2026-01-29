@@ -22,11 +22,12 @@ import com.megacrit.cardcrawl.cards.status.Slimed;
 import com.megacrit.cardcrawl.cards.status.Wound;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
-import java.util.ArrayList;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class DemonBlood extends CustomRelic {
     public static final String ID = "echoForm:DemonBlood";
@@ -47,22 +48,10 @@ public class DemonBlood extends CustomRelic {
     @Override
     public void onEquip() {
         // 拾起时，向卡组中加入三张随机诅咒
-        //todo 改成真正的从所有诅咒牌里面抽取而不是预定义 CardLibrary
-        ArrayList<AbstractCard> curses = new ArrayList<>();
-        curses.add(new CurseOfTheBell());
-        curses.add(new Doubt());
-        curses.add(new Injury());
-        curses.add(new Normality());
-        curses.add(new Pain());
-        curses.add(new Parasite());
-        curses.add(new Regret());
-        curses.add(new Shame());
-        curses.add(new Writhe());
-        
+        // 使用CardLibrary.getCurse()方法从游戏卡牌库中随机抽取诅咒牌
         for (int i = 0; i < 3; i++) {
-            //todo 加入卡组啊，不是抽牌堆
-            AbstractCard curse = curses.get(AbstractDungeon.cardRandomRng.random(curses.size() - 1)).makeCopy();
-            AbstractDungeon.effectList.add(new com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndAddToDrawPileEffect(curse, true, false));
+            AbstractCard curse = CardLibrary.getCurse().makeCopy();
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(curse, (float) Settings.WIDTH /2, (float) Settings.HEIGHT /2));
         }
     }
 

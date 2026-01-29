@@ -55,41 +55,6 @@ public class NeurotoxinPower extends AbstractPower {
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
-
-    // 当怪物准备攻击时，随机改变目标
-    public void onMonsterAttack(AbstractMonster monster, AbstractCreature originalTarget) {
-        if (monster.hasPower(PoisonPower.POWER_ID) && monster.hasPower(POWER_ID)) {
-            // 获取所有可能的目标
-            ArrayList<AbstractCreature> possibleTargets = new ArrayList<>();
-            
-            // 添加玩家
-            possibleTargets.add(AbstractDungeon.player);
-            
-            // 添加其他怪物（除了自己）
-            for (AbstractMonster m : AbstractDungeon.getMonsters().monsters) {
-                if (m != monster && !m.isDead && !m.isDying) {
-                    possibleTargets.add(m);
-                }
-            }
-            
-            // 随机选择一个目标
-            if (possibleTargets.size() > 1) {
-                AbstractCreature newTarget = possibleTargets.get(AbstractDungeon.cardRandomRng.random(possibleTargets.size() - 1));
-                
-                // 如果新目标不是玩家，则显示提示
-                if (newTarget != AbstractDungeon.player) {
-                    // 显示目标改变的视觉效果
-                    AbstractDungeon.topLevelEffects.add(new com.megacrit.cardcrawl.vfx.combat.RoomTintEffect(
-                        new com.badlogic.gdx.graphics.Color(0.0f, 1.0f, 0.0f, 0.3f), 0.5f));
-                }
-                
-                // 修改怪物的攻击意图目标
-                monster.intent = com.megacrit.cardcrawl.monsters.AbstractMonster.Intent.ATTACK;
-                monster.setMove((byte) 0, com.megacrit.cardcrawl.monsters.AbstractMonster.Intent.ATTACK,
-                               monster.getIntentDmg(), 0, newTarget instanceof AbstractMonster);
-            }
-        }
-    }
     
     @Override
     public void atEndOfTurn(boolean isPlayer) {
