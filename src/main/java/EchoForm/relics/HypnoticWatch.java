@@ -1,5 +1,6 @@
 package EchoForm.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -10,7 +11,7 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster.Intent;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
-
+@AutoAdd.Ignore
 public class HypnoticWatch extends CustomRelic {
     public static final String ID = "echoForm:HypnoticWatch";
     private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);

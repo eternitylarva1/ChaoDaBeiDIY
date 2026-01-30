@@ -11,6 +11,15 @@ public class DarkContractPatch {
     public static class ReduceDrawAmount {
         @SpirePrefixPatch
         public static void patch(DrawCardAction __instance) {
+
+            //思路：
+            //patch一下draw card action
+            //加一个字段
+            //然后在构造方法里判断，如果来自于use就设置为true
+            //用get stacktrace
+            //如果来自于draw card action就复制那个action的
+
+            /*
             // 检查玩家是否有暗黑契约遗物
             if (AbstractDungeon.player != null && AbstractDungeon.player.hasRelic("echoForm:DarkContract")) {
                 // 检查当前抽牌数是否大于1
@@ -42,7 +51,7 @@ public class DarkContractPatch {
                         __instance.amount -= 1;
                     }
                 }
-            }
+            }*/
         }
     }
 }

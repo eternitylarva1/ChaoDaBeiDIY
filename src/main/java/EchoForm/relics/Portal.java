@@ -6,11 +6,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.MonsterHelper;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.monsters.MonsterGroup;
 import com.megacrit.cardcrawl.monsters.exordium.GremlinFat;
+import com.megacrit.cardcrawl.monsters.exordium.JawWorm;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoom;
 import com.megacrit.cardcrawl.rooms.MonsterRoomElite;
 
@@ -29,9 +32,27 @@ public class Portal extends CustomRelic {
     public String getUpdatedDescription() {
         return DESCRIPTIONS[0];
     }
+    public void atBattleStart() {
+        AbstractRoom room=AbstractDungeon.getCurrRoom();
+        if (room instanceof MonsterRoomElite) {
+            this.flash();
+
+            // 清空现有的怪物列表
+            room.monsters= new MonsterGroup(new AbstractMonster[]{new JawWorm(-490.0F, -5.0F, true)});
+
+
+
+            // 初始化怪物
+            room.monsters.init();
+
+        }
+
+    }
+
 
     @Override
     public void onEnterRoom(com.megacrit.cardcrawl.rooms.AbstractRoom room) {
+        /*
         // 所有精英房间变为一个大颚虫
         if (room instanceof MonsterRoomElite) {
             this.flash();
@@ -47,7 +68,7 @@ public class Portal extends CustomRelic {
             
             // 初始化怪物
             room.monsters.init();
-        }
+        }*/
     }
 
     @Override

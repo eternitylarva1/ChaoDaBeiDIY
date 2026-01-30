@@ -1,5 +1,6 @@
 package EchoForm.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -12,7 +13,9 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.powers.DarkEmbracePower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import jdk.nashorn.internal.ir.annotations.Ignore;
 
+@AutoAdd.Ignore
 public class DarkContract extends CustomRelic {
     public static final String ID = "echoForm:DarkContract";
     private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);

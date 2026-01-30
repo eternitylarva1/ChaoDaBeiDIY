@@ -1,5 +1,6 @@
 package EchoForm.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,7 +19,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.util.ArrayList;
-
+@AutoAdd.Ignore
 public class CursedEye extends CustomRelic {
     public static final String ID = "echoForm:CursedEye";
     private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);

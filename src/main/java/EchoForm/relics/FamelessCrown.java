@@ -32,26 +32,26 @@ public class FamelessCrown extends CustomRelic {
     @Override
     public void atBattleStart() {
         this.flash();
-        this.counter = 3;
+        this.counter = AbstractDungeon.player.energy.energyMaster+3;
     }
 
     @Override
     public void atTurnStart() {
+
         this.flash();
         // 每回合抽牌加1
         addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 1));
         // 能量加3，每回合获得能量逐渐减少，可以倒扣，倒扣数量不会超过EnergyPanel.totalCount-1
         // 确保倒扣数量不会超过当前总能量-1（至少保留1点能量）
         int maxEnergy = AbstractDungeon.player.energy.energyMaster;
-        int minEnergy = Math.max(-maxEnergy + 1, -10); // 设置最小能量为-10或-maxEnergy+1中的较大值
-        
-        addToBot((AbstractGameAction)new GainEnergyAction(this.counter));
-        this.counter--;
-        
-        // 如果counter小于最小值，则重置为3
-        if (this.counter < minEnergy) {
-            this.counter = 3;
+
+        addToBot((AbstractGameAction)new GainEnergyAction(this.counter-maxEnergy));
+        if (this.counter>=2) {
+            this.counter--;
         }
+
+        // 如果counter小于最小值，则重置为3
+
     }
 
     @Override

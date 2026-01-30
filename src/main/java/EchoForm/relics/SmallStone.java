@@ -25,12 +25,13 @@ public class SmallStone extends CustomRelic {
     private static final String IMG = "echoFormResources/images/relics/SmallStone.png";
     
     // 计数器，用于跟踪房间数量
-    private int roomCounter = 0;
+
     // 标记是否已经触发了强制战斗
     private boolean forceBattleTriggered = false;
 
     public SmallStone() {
         super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.COMMON, LandingSound.SOLID);
+        this.counter = 0;
     }
 
     @Override
@@ -49,11 +50,9 @@ public class SmallStone extends CustomRelic {
     
     @Override
     public void onEnterRoom(AbstractRoom room) {
-        // 每进入一个房间增加计数器
-        roomCounter++;
-        
-        // 每4个房间，如果不是战斗房间，则强制触发战斗
-        if (roomCounter % 4 == 0 && !forceBattleTriggered) {
+
+        this.counter++;
+        if (this.counter % 4 == 0 && !forceBattleTriggered) {
             if (room instanceof com.megacrit.cardcrawl.rooms.RestRoom ||
                 room instanceof com.megacrit.cardcrawl.rooms.ShopRoom ||
                 room instanceof com.megacrit.cardcrawl.rooms.EventRoom) {
@@ -71,13 +70,13 @@ public class SmallStone extends CustomRelic {
                 // 重置房间
                 AbstractDungeon.nextRoomTransitionStart();
             }
-        } else if (roomCounter % 4 == 0 && room instanceof com.megacrit.cardcrawl.rooms.MonsterRoom) {
+        } else if (this.counter % 4 == 0 && room instanceof com.megacrit.cardcrawl.rooms.MonsterRoom) {
             // 如果已经是战斗房间，则标记为已触发
             forceBattleTriggered = true;
         }
         
         // 重置标记，为下一个4房间周期做准备
-        if (roomCounter % 4 == 0) {
+        if (this.counter % 4 == 0) {
             forceBattleTriggered = false;
         }
     }

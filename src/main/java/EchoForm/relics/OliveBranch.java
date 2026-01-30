@@ -1,5 +1,6 @@
 package EchoForm.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -26,6 +27,7 @@ public class OliveBranch extends CustomRelic {
 
     public OliveBranch() {
         super(ID, new Texture(Gdx.files.internal(IMG)), RelicTier.RARE, LandingSound.MAGICAL);
+        this.counter=-1;
     }
 
     @Override
@@ -35,23 +37,19 @@ public class OliveBranch extends CustomRelic {
 
     @Override
     public void onPlayerEndTurn() {
-        // 回合结束时，如果场上的怪物都是满血，额外获得一回合
-        if (this.counter < MAX_EXTRA_TURNS) {
-            boolean allMonstersFullHealth = true;
-            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
-                if (!m.isDeadOrEscaped() && m.currentHealth < m.maxHealth) {
-                    allMonstersFullHealth = false;
-                    break;
-                }
-            }
-            if (allMonstersFullHealth && !AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                this.flash();
-                //改为真正获得一回合
-                this.addToBot(new SkipEnemiesTurnAction());
-            }
+        if (this.counter==0){
+            return;
         }
-    }
 
+    }
+    public void atTurnStart() {
+if (this.counter>0){
+    this.counter--;
+}
+    }
+    public void atBattleStart() {
+        this.counter=3;
+    }
     @Override
     public AbstractRelic makeCopy() {
         return new OliveBranch();

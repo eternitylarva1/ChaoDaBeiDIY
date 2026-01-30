@@ -25,6 +25,7 @@ import com.megacrit.cardcrawl.localization.UIStrings;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
@@ -39,7 +40,7 @@ import static com.megacrit.cardcrawl.core.Settings.seed;
 
 
 @SpireInitializer
-public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber, EditCardsSubscriber, OnPlayerTurnStartSubscriber, PostExhaustSubscriber, PostDrawSubscriber { // 实现接口
+public class echoForm implements PreMonsterTurnSubscriber,StartActSubscriber,PostDungeonInitializeSubscriber,PostInitializeSubscriber,EditKeywordsSubscriber,OnStartBattleSubscriber, PostBattleSubscriber , EditStringsSubscriber, EditRelicsSubscriber, EditCardsSubscriber, OnPlayerTurnStartSubscriber, PostExhaustSubscriber, PostDrawSubscriber { // 实现接口
     public echoForm() {
         BaseMod.subscribe(this); // 告诉basemod你要订阅事件
     }
@@ -187,5 +188,21 @@ public class echoForm implements StartActSubscriber,PostDungeonInitializeSubscri
                 burningSword.isCostModified = true;
             }
         }
+    }
+
+    @Override
+    public boolean receivePreMonsterTurn(AbstractMonster abstractMonster) {
+        if (AbstractDungeon.player.hasRelic(OliveBranch.ID)&&AbstractDungeon.player.getRelic(OliveBranch.ID).counter>0){
+            boolean allMonstersFullHealth = true;
+            for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                if (!m.isDeadOrEscaped() && m.currentHealth < m.maxHealth) {
+                    allMonstersFullHealth = false;
+                    break;
+                }
+            }
+            return !allMonstersFullHealth;
+        }
+        return true;
+
     }
 }

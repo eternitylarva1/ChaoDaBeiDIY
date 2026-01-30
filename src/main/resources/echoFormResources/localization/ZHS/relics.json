@@ -1,12 +1,5 @@
 {
-    "echoForm:Huixiang": {
-        "NAME": "回想",
-        "FLAVOR": "回忆涌上心头。",
-        "DESCRIPTIONS": [
-            "每打出5张牌，重复该效果。",
-            "从抽牌堆随机弃置1张牌，抽2张牌。"
-        ]
-    },
+
     "echoForm:DemonBlood": {
         "NAME": "恶魔之血",
         "FLAVOR": "这就是……恶魔的力量……",

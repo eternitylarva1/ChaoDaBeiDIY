@@ -38,8 +38,12 @@ public class Fireworks extends CustomRelic {
         // 所有耗能大于一的牌打出后消耗并对所有敌人造成12点伤害
         if (card.costForTurn > 1) {
             this.flash();
+            card.exhaust=true;
             // 消耗这张牌
+
+
             addToBot((AbstractGameAction)new ExhaustSpecificCardAction(card, AbstractDungeon.player.limbo));
+
             // 对所有敌人造成12点伤害
             addToBot((AbstractGameAction)new DamageAllEnemiesAction(AbstractDungeon.player, DAMAGE_AMOUNT, DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
         }
