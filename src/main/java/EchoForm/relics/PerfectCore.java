@@ -18,6 +18,8 @@ import com.megacrit.cardcrawl.orbs.Plasma;
 import com.megacrit.cardcrawl.powers.BufferPower;
 import com.megacrit.cardcrawl.powers.FocusPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.CrackedCore;
+import com.megacrit.cardcrawl.relics.PureWater;
 
 public class PerfectCore extends CustomRelic {
     public static final String ID = "echoForm:PerfectCore";
@@ -54,7 +56,9 @@ public class PerfectCore extends CustomRelic {
         addToBot((AbstractGameAction)new ChannelAction(new Dark()));
         addToBot((AbstractGameAction)new ChannelAction(new Plasma()));
     }
-
+    public boolean canSpawn() {
+        return AbstractDungeon.player.hasRelic(CrackedCore.ID);
+    }
     @Override
     public AbstractRelic makeCopy() {
         return new PerfectCore();

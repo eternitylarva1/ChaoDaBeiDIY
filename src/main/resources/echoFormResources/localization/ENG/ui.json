@@ -4,5 +4,10 @@
       "Destroy",
       "Destroy this campfire and get 80 gold coins"
     ]
+  },
+  "HolyRingAction": {
+    "TEXT": [
+      "Select cards to discard, gain 1 energy for each card discarded (max 2)"
+    ]
   }
 }

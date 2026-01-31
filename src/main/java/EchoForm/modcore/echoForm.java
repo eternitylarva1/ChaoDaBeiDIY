@@ -101,6 +101,7 @@ public class echoForm implements PreMonsterTurnSubscriber,StartActSubscriber,Pos
         BaseMod.loadCustomStringsFile(PowerStrings.class, "echoFormResources/localization/" + lang + "/powers.json");
         BaseMod.loadCustomStringsFile(CardStrings.class, "echoFormResources/localization/" + lang + "/cards.json");
         BaseMod.loadCustomStringsFile(PotionStrings.class, "echoFormResources/localization/" + lang + "/potions.json");
+   BaseMod.loadCustomStringsFile(UIStrings.class, "echoFormResources/localization/" + lang + "/ui.json");
 
     }
     public static float getYPos(float y) {

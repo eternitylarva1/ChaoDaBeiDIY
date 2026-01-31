@@ -1,5 +1,7 @@
 package EchoForm.cards;
 
+import EchoForm.helpers.ModHelper;
+import basemod.AutoAdd;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -8,10 +10,10 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import EchoForm.actions.ExhaustAllAttackAction;
 
-import static EchoForm.EchoForm.makeID;
+@AutoAdd.Ignore
 
 public class SwordToArmor extends AbstractCard {
-    public static final String ID = makeID("SwordToArmor");
+    public static final String ID = ModHelper.makePath("SwordToArmor");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;

@@ -37,16 +37,15 @@ public class HolyRing extends CustomRelic {
     public void atTurnStartPostDraw() {
         this.flash();
 
-        this.counter = 0;
         // 每回合开始时，额外抽两张牌
         addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 2));
         
         // 然后可以弃置任意张牌，获得等量的能量（每回合最多两点能量）
-        if (!AbstractDungeon.player.hand.isEmpty()) {
+
             addToBot((AbstractGameAction)new WaitAction(0.5f));
             // 使用HolyRingAction让玩家选择要弃置的牌，每弃置一张获得1点能量（最多2点）
             addToBot((AbstractGameAction)new HolyRingAction(AbstractDungeon.player, 2));
-        }
+
     }
 
     @Override

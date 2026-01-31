@@ -13,6 +13,8 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.BlackBlood;
+import com.megacrit.cardcrawl.relics.PureWater;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
 public  class PrimordialWater extends CustomRelic implements ClickableRelic {
@@ -81,7 +83,9 @@ public  class PrimordialWater extends CustomRelic implements ClickableRelic {
     public AbstractRelic makeCopy() {
         return new PrimordialWater();
     }
-
+    public boolean canSpawn() {
+        return AbstractDungeon.player.hasRelic(PureWater.ID);
+    }
     @Override
     public void onRightClick() {
         this.onTrigger();

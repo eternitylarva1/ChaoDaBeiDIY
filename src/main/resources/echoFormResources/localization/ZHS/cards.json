@@ -57,5 +57,10 @@
     "NAME": "袖舞流星",
     "DESCRIPTION": "依次将你的手牌随机进行：打出，丢弃，复制，升级，变化费用，或者消耗（只消耗非攻击牌）。",
     "UPGRADE_DESCRIPTION": "依次将你的手牌随机进行：打出，丢弃，复制，升级，变化费用，或者消耗（只消耗非攻击牌）。"
+  },
+  "EchoForm:SwordToArmor": {
+    "NAME": "铸剑为甲",
+    "DESCRIPTION": "消耗手牌中所有攻击牌。 NL 每消耗1张获取 !M! 层多重护甲。 NL 消耗 。",
+    "UPGRADE_DESCRIPTION": "消耗手牌中所有攻击牌。 NL 每消耗1张获取 !M! 层多重护甲。 NL 消耗 。"
   }
 }

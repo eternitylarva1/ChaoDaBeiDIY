@@ -27,6 +27,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.BlackBlood;
+import com.megacrit.cardcrawl.relics.SnakeRing;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class DemonBlood extends CustomRelic {
@@ -78,13 +80,12 @@ public class DemonBlood extends CustomRelic {
         this.counter = 0;
     }
 
-
+    public boolean canSpawn() {
+        return AbstractDungeon.player.hasRelic(BlackBlood.ID);
+    }
     @Override
     public AbstractRelic makeCopy() {
         return new DemonBlood();
     }
-    public void obtain(){
-        super.obtain();
-        //检索玩家是否有
-    }
+
 }

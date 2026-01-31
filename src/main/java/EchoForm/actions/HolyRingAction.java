@@ -15,19 +15,21 @@ public class HolyRingAction extends AbstractGameAction {
     public static final String[] TEXT = uiStrings.TEXT;
     private int energyGained = 0;
     private int maxEnergy;
+    private boolean hasused;
     
     public HolyRingAction(AbstractPlayer p, int maxEnergy) {
         this.p = p;
         this.maxEnergy = maxEnergy;
         this.actionType = ActionType.CARD_MANIPULATION;
-        this.duration=1.0F;
+        this.duration=0.1F;
+        hasused=false;
     }
 
     public void update() {
-        if (this.duration == 0.5F) {
+        if (this.duration <=0.1F&&!hasused) {
             AbstractDungeon.handCardSelectScreen.open(TEXT[0], 99, true, true);
-            addToBot(new WaitAction(0.25F));
             tickDuration();
+            hasused=true;
             return;
         }
         
