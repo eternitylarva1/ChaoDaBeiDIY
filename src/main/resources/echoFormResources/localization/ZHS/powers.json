@@ -38,6 +38,12 @@
       "每打出一张能力牌，获得",
       "层真言"
     ]
+  },"MachineSilencePower": {
+    "NAME": "机静",
+    "DESCRIPTIONS": [
+      "下次额外生成",
+      "个充能球"
+    ]
   },
   "Invincible1": {
     "NAME": "无敌",

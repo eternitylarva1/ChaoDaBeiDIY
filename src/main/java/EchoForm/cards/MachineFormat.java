@@ -24,7 +24,7 @@ public class MachineFormat extends CustomCard {
     public MachineFormat() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.POWER, CardColor.BLUE, CardRarity.UNCOMMON, CardTarget.SELF);
         this.magicNumber = this.baseMagicNumber = MAGIC_NUMBER;
-        this.selfRetain = true;
+        isInnate=true;
     }
 
     @Override

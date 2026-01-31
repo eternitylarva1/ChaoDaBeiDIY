@@ -23,7 +23,7 @@ public class Bloodfall extends CustomCard {
     public static final String NAME = cardStrings.NAME;
     public static final String DESCRIPTION = cardStrings.DESCRIPTION;
     private static final String IMG_PATH = "echoFormResources/images/cards/Bloodfall_attack.png";
-    private static final int COST = -1; // X费
+    private static final int COST = 2; // 2费
 
     public Bloodfall() {
         super(ID, NAME, IMG_PATH, COST, DESCRIPTION, CardType.ATTACK, CardColor.RED, CardRarity.RARE, CardTarget.ALL_ENEMY);
@@ -95,9 +95,9 @@ public class Bloodfall extends CustomCard {
         for (AbstractCard c : AbstractDungeon.player.hand.group) {
             if (c.cardID.equals(Bloodfall.this.cardID)) {
                 if (AbstractDungeon.player.hand.group.indexOf(c)<AbstractDungeon.player.hand.group.indexOf(Bloodfall.this)) {
-                    totalDamage+= c.damage;
+                    totalDamage+= c.baseDamage;
                 }else if (!AbstractDungeon.player.hand.group.contains(Bloodfall.this)){
-                    totalDamage+= c.damage;
+                    totalDamage+= c.baseDamage;
                 }
             }
         }
