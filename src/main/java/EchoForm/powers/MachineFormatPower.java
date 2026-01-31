@@ -44,7 +44,7 @@ public class MachineFormatPower extends AbstractPower {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
-        this.amount = amount;
+        this.amount = -1;
         this.updateDescription();
         this.img=ImageMaster.loadImage(IMG_PATH_48);
 
@@ -60,6 +60,6 @@ public class MachineFormatPower extends AbstractPower {
     }
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] ;
+        this.description = DESCRIPTIONS[0] +1 + DESCRIPTIONS[1] ;
     }
 }

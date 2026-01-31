@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.vfx.cardManip.PurgeCardEffect;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.vfx.cardManip.ShowCardAndObtainEffect;
 
 public class ChessPiece extends CustomRelic {
     public static final String ID = "echoForm:ChessPiece";
@@ -55,7 +56,7 @@ public class ChessPiece extends CustomRelic {
         if (m.type == AbstractMonster.EnemyType.ELITE) {
             this.flash();
             // 获得一张战略大师卡牌
-            addToBot((AbstractGameAction)new MakeTempCardInDrawPileAction(new MasterOfStrategy(), 1, true, true));
+            AbstractDungeon.effectList.add(new ShowCardAndObtainEffect(new MasterOfStrategy(),Settings.WIDTH/2,Settings.HEIGHT/2));
         }
     }
 

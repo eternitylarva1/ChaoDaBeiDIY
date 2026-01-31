@@ -12,6 +12,9 @@ import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
+import com.megacrit.cardcrawl.rooms.EventRoom;
+
+import static EchoForm.patchs.TwistedVinePatch.TwistVineOn;
 
 public class TwistedVine extends CustomRelic {
     public static final String ID = "echoForm:TwistedVine";
@@ -33,11 +36,14 @@ public class TwistedVine extends CustomRelic {
 
     @Override
     public void onEnterRoom(AbstractRoom room) {
-        // 房间类型修改由TwistedVinePatch处理
+
     }
 
     @Override
     public void atBattleStart() {
+   if (!TwistVineOn){
+       return;
+   }
         // 参考昆虫标本遗物：降低怪物最大生命25%
         this.flash();
         for (AbstractMonster m : AbstractDungeon.getCurrRoom().monsters.monsters) {
@@ -51,6 +57,9 @@ public class TwistedVine extends CustomRelic {
 
     @Override
     public void onVictory() {
+        if (!TwistVineOn){
+            return;
+        }
         // 在战斗结束后额外掉落一个遗物
         if (AbstractDungeon.getCurrRoom() != null &&
             AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {

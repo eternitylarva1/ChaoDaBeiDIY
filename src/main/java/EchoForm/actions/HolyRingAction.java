@@ -20,6 +20,7 @@ public class HolyRingAction extends AbstractGameAction {
         this.p = p;
         this.maxEnergy = maxEnergy;
         this.actionType = ActionType.CARD_MANIPULATION;
+        this.duration=1.0F;
     }
 
     public void update() {

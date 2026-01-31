@@ -31,7 +31,7 @@ public  class PrimordialWater extends CustomRelic implements ClickableRelic {
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + (MAX_MIRACLES - this.counter) + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0] + (MAX_MIRACLES) + DESCRIPTIONS[1];
     }
 
     @Override

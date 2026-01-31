@@ -5,11 +5,13 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 public class Plate extends CustomRelic {
@@ -30,7 +32,18 @@ public class Plate extends CustomRelic {
 
     // 盘子遗物的效果通过PlatePatch实现
     // 因敌人攻击失去格挡时对所有敌人造成相当于失去格挡的伤害
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.owner != null && info.type != DamageInfo.DamageType.HP_LOSS && info.type != DamageInfo.DamageType.THORNS ) {
+            this.flash();
+            if (info.owner instanceof AbstractMonster){
 
+            }
+            this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+            return 1;
+        } else {
+            return damageAmount;
+        }
+    }
     @Override
     public AbstractRelic makeCopy() {
         return new Plate();

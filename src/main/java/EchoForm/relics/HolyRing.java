@@ -14,6 +14,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.RelicStrings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import EchoForm.actions.HolyRingAction;
+import com.megacrit.cardcrawl.relics.BlackBlood;
+import com.megacrit.cardcrawl.relics.SnakeRing;
 
 public class HolyRing extends CustomRelic {
     public static final String ID = "echoForm:HolyRing";
@@ -32,8 +34,9 @@ public class HolyRing extends CustomRelic {
     }
 
     @Override
-    public void atTurnStart() {
+    public void atTurnStartPostDraw() {
         this.flash();
+
         this.counter = 0;
         // 每回合开始时，额外抽两张牌
         addToBot((AbstractGameAction)new DrawCardAction(AbstractDungeon.player, 2));
@@ -52,6 +55,10 @@ public class HolyRing extends CustomRelic {
         // 由于atTurnStart已经实现了弃牌获得能量的功能，这里不再需要额外实现
         // 玩家可以在回合开始时选择弃置任意数量的牌来获得能量
     }
+    public boolean canSpawn() {
+        return AbstractDungeon.player.hasRelic(SnakeRing.ID);
+    }
+
 
     @Override
     public void onExhaust(AbstractCard card) {

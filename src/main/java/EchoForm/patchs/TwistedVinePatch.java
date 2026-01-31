@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.rooms.MonsterRoom;
  */
 @SpirePatch(clz = AbstractDungeon.class, method = "nextRoomTransition",paramtypez = {})
 public class TwistedVinePatch {
-    
+    public  static  boolean TwistVineOn=false;
     @SpirePrefixPatch
     public static void Prefix(AbstractDungeon __instance) {
         // 检查玩家是否拥有TwistedVine遗物
@@ -25,6 +25,9 @@ public class TwistedVinePatch {
                 
                 // 更新地图节点上的房间
                 AbstractDungeon.nextRoom.setRoom(monsterRoom);
+                TwistVineOn=true;
+            }else {
+                TwistVineOn=false;
             }
         }
     }

@@ -78,8 +78,13 @@ public class DemonBlood extends CustomRelic {
         this.counter = 0;
     }
 
+
     @Override
     public AbstractRelic makeCopy() {
         return new DemonBlood();
+    }
+    public void obtain(){
+        super.obtain();
+        //检索玩家是否有
     }
 }

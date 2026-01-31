@@ -1,5 +1,6 @@
 package EchoForm.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,7 +19,7 @@ import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.rewards.RewardItem;
 
 import java.util.ArrayList;
-
+@AutoAdd.Ignore
 public class SteleFragment extends CustomRelic {
     public static final String ID = "echoForm:SteleFragment";
     private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);

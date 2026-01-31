@@ -1,5 +1,6 @@
 package EchoForm.relics;
 
+import basemod.AutoAdd;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -20,7 +21,7 @@ import com.megacrit.cardcrawl.rooms.RestRoom;
 import com.megacrit.cardcrawl.vfx.cardManip.ShowCardBrieflyEffect;
 
 import java.util.ArrayList;
-
+@AutoAdd.Ignore
 public class Tombstone extends CustomRelic {
     public static final String ID = "echoForm:Tombstone";
     private static final RelicStrings relicStrings = CardCrawlGame.languagePack.getRelicStrings(ID);
